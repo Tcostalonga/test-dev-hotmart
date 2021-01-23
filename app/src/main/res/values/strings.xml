@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Test Dev Hotmart</string>
     <string name="hello_blank_fragment">Hello HOME fragment</string>
+    <string name="restaurante">Restaurante</string>
 </resources>
