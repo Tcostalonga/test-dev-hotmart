@@ -17,6 +17,8 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -52,56 +54,62 @@
 
         <ImageView
             android:id="@+id/star1"
+            style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_4"
+            app:layout_constraintBottom_toBottomOf="@id/star2"
             app:layout_constraintEnd_toStartOf="@+id/star2"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@id/type"
             app:layout_constraintTop_toBottomOf="@+id/type"
-            app:srcCompat="@drawable/ic_off" />
+            app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
             android:id="@+id/star2"
+            style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_4"
-            app:layout_constraintBottom_toBottomOf="@+id/star3"
+            app:layout_constraintBottom_toBottomOf="@id/star3"
             app:layout_constraintEnd_toStartOf="@+id/star3"
             app:layout_constraintStart_toEndOf="@+id/star1"
+
             app:layout_constraintTop_toBottomOf="@+id/type"
-            app:srcCompat="@drawable/ic_off" />
+            app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
             android:id="@+id/star3"
+            style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_4"
-            app:layout_constraintBottom_toBottomOf="@+id/star4"
+            app:layout_constraintBottom_toBottomOf="@id/star4"
+
             app:layout_constraintEnd_toStartOf="@+id/star4"
             app:layout_constraintStart_toEndOf="@+id/star2"
             app:layout_constraintTop_toBottomOf="@+id/type"
-            app:srcCompat="@drawable/ic_off" />
+            app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
             android:id="@+id/star4"
+            style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_4"
+            app:layout_constraintBottom_toBottomOf="@id/star5"
+
             app:layout_constraintEnd_toStartOf="@+id/star5"
             app:layout_constraintStart_toEndOf="@+id/star3"
             app:layout_constraintTop_toBottomOf="@+id/type"
-            app:srcCompat="@drawable/ic_off" />
+            app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
             android:id="@+id/star5"
+            style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_4"
+
             app:layout_constraintEnd_toStartOf="@id/rating"
             app:layout_constraintStart_toEndOf="@+id/star4"
             app:layout_constraintTop_toBottomOf="@+id/type"
-            app:srcCompat="@drawable/ic_off" />
+            app:srcCompat="@drawable/ic_s_off" />
 
         <TextView
             android:id="@+id/rating"
@@ -110,7 +118,7 @@
             android:layout_marginStart="@dimen/margin_4"
             android:textColor="@color/black_two"
             android:textSize="@dimen/font_12"
-            app:layout_constraintBottom_toBottomOf="@+id/star5"
+            app:layout_constraintBottom_toBottomOf="@id/star5"
             app:layout_constraintStart_toEndOf="@id/star5"
             app:layout_constraintTop_toTopOf="@+id/star5"
             tools:text="2.9" />

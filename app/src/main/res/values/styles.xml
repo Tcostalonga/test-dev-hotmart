@@ -2,12 +2,34 @@
 <resources>
 
 
-
-//CardStyle
+    //list_item.xml
     <style name="myCardStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/margin_16</item>
         <item name="cardElevation">@dimen/margin_4</item>
     </style>
 
+
+    //fragment_details.xml
+    <style name="starStyle_relative" >
+        <item name="android:layout_marginTop">@dimen/margin_4</item>
+        <item name="android:layout_below">@id/type</item>
+        <item name="android:scaleX">1.5</item>
+        <item name="android:scaleY">1.5</item>
+        <item name="android:padding">@dimen/margin_4</item>
+     </style>
+
+    //fragment_details.xml
+    <style name="starStyle_constraint" >
+        <item name="android:layout_marginTop">@dimen/margin_4</item>
+        <item name="android:padding">1dp</item>
+
+    </style>
+
+    //fragment_details.xml
+    <style name="txt_location" >
+        <item name="android:layout_marginBottom">@dimen/margin_20</item>
+        <item name="android:layout_marginStart">@dimen/margin_8</item>
+
+    </style>
 
 </resources>

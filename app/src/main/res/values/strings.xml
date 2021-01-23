@@ -8,4 +8,6 @@
     <string name="home">Home</string>
     <string name="map">Map</string>
     <string name="profile">Profile</string>
+    <string name="txt_label_fotos">FOTOS</string>
+    <string name="txt_label_sobre">SOBRE</string>
 </resources>
