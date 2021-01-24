@@ -10,6 +10,14 @@ data class ListLocations(
 
 @Parcelize
 data class Locations(
+    val id : Int,
+    val name: String,
+    val review: Float,
+    val type: String,
+) : Parcelable
+
+data class DetailLocation(
+    val id : Int,
     val name: String,
     val review: Float,
     val type: String,
@@ -17,9 +25,9 @@ data class Locations(
     val phone: String,
     val address: String,
     val schedule: Schedule
-) : Parcelable
+)
 
-@Parcelize
+
 data class Schedule(
     val monday: Timing,
     val tuesday: Timing,
@@ -28,10 +36,10 @@ data class Schedule(
     val friday: Timing,
     val saturday: Timing,
     val sunday: Timing,
-) : Parcelable
+)
 
-@Parcelize
+
 data class Timing(
     val open: String,
     val close: String
-) : Parcelable
+)

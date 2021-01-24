@@ -86,5 +86,11 @@ dependencies {
 
     //Inject viewModels() into Fragments
     implementation "androidx.activity:activity-ktx:1.1.0"
- 
+
+    //HttpLog
+    implementation "com.squareup.okhttp3:okhttp:3.14.9"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.9"
+
+
+
 }

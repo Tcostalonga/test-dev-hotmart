@@ -14,7 +14,7 @@
         android:layout_marginBottom="@dimen/margin_20">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/img_home"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:cropToPadding="true"
@@ -26,27 +26,31 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_8"
             android:layout_marginTop="@dimen/margin_8"
+           android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
             android:fontFamily="@font/open_sans_semibold"
             android:textColor="@color/topaz"
             android:textSize="@dimen/font_16"
             app:layout_constraintBottom_toTopOf="@id/type"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView"
+            app:layout_constraintTop_toBottomOf="@id/img_home"
             tools:text="Hangar" />
 
         <TextView
             android:id="@+id/type"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_8"
             android:fontFamily="@font/open_sans"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
             android:textColor="@color/brownish_grey"
             android:textSize="@dimen/font_14"
             app:layout_constraintBottom_toTopOf="@id/star1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name"
             tools:text="Restaurante" />
@@ -105,14 +109,13 @@
             style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            app:layout_constraintEnd_toStartOf="@id/rating"
+            app:layout_constraintEnd_toStartOf="@id/review"
             app:layout_constraintStart_toEndOf="@+id/star4"
             app:layout_constraintTop_toBottomOf="@+id/type"
             app:srcCompat="@drawable/ic_s_off" />
 
         <TextView
-            android:id="@+id/rating"
+            android:id="@+id/review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_4"
