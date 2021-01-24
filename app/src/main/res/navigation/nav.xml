@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="tarsila.costalonga.testdevhotmart.ui.home.details.DetailsFragment"
+        android:name="tarsila.costalonga.testdevhotmart.ui.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
 </navigation>
