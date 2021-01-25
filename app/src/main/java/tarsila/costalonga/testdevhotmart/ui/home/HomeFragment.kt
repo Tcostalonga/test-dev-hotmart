@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import tarsila.costalonga.testdevhotmart.R
@@ -34,26 +35,36 @@ class HomeFragment : Fragment() {
         Log.i("HomeFragment", "Chamou on create view ")
 
         setRecyclerView()
-        controlItemsViewVisibitily()
-
+        controlItemsViewVisibility()
 
         viewModel.locations.observe(viewLifecycleOwner, Observer {
             adapter.data = it.listLocations
             adapter.notifyDataSetChanged()
             Log.i("HomeFragment", "${it.listLocations[0].review}")
         })
-
-
+        viewModel.requestLocations()
         return binding.root
     }
 
 
-    private fun controlItemsViewVisibitily() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i("HomeFragment", "Chamou on create")
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("HomeFragment", "Chamou onStart")
+
+    }
+
+    private fun controlItemsViewVisibility() {
 
         viewModel.statusRequest.observe(viewLifecycleOwner, Observer {
             when (it) {
                 Status.ERROR -> {
-                    binding.pgBar.visibility = View.GONE
+                    binding.pgBarHome.visibility = View.GONE
                     binding.recView.visibility = View.GONE
                     binding.imgError.visibility = View.VISIBLE
                     binding.txtError.visibility = View.VISIBLE
@@ -71,13 +82,11 @@ class HomeFragment : Fragment() {
                 Status.SUCCESS -> {
                     binding.recView.visibility = View.VISIBLE
 
-                    binding.pgBar.visibility = View.GONE
+                    binding.pgBarHome.visibility = View.GONE
                     binding.imgError.visibility = View.GONE
                     binding.txtError.visibility = View.GONE
                 }
-                else -> binding.pgBar.visibility = View.VISIBLE
-
-
+                else -> binding.pgBarHome.visibility = View.VISIBLE
             }
         })
     }
@@ -87,15 +96,13 @@ class HomeFragment : Fragment() {
         binding.recView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.recView.adapter = adapter
+
+        adapter.clicksAcao = object : ClicksAcao{
+            override fun onClick(id: Int) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(id))
+             }
+        }
     }
 
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.requestLocationsAPI()
-        Log.i("HomeFragment", "onResumeCalled")
-
-
-    }
 
 }

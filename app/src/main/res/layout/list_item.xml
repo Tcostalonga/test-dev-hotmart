@@ -3,6 +3,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_home"
     style="@style/myCardStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -25,105 +26,100 @@
             tools:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/name_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
             android:layout_marginTop="@dimen/margin_8"
-           android:layout_marginStart="@dimen/margin_8"
             android:layout_marginEnd="@dimen/margin_8"
             android:fontFamily="@font/open_sans_semibold"
             android:textColor="@color/topaz"
             android:textSize="@dimen/font_16"
-            app:layout_constraintBottom_toTopOf="@id/type"
+            app:layout_constraintBottom_toTopOf="@id/type_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_home"
             tools:text="Hangar" />
 
         <TextView
-            android:id="@+id/type"
+            android:id="@+id/type_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans"
             android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginBottom="@dimen/margin_4"
             android:layout_marginEnd="@dimen/margin_8"
+            android:fontFamily="@font/open_sans"
             android:textColor="@color/brownish_grey"
             android:textSize="@dimen/font_14"
-            app:layout_constraintBottom_toTopOf="@id/star1"
+            app:layout_constraintBottom_toTopOf="@id/star1_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name_home"
             tools:text="Restaurante" />
 
 
         <ImageView
-            android:id="@+id/star1"
+            android:id="@+id/star1_home"
             style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/star2"
-            app:layout_constraintEnd_toStartOf="@+id/star2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/star2_home"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@id/type"
-            app:layout_constraintTop_toBottomOf="@+id/type"
+            app:layout_constraintStart_toStartOf="@id/type_home"
             app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
-            android:id="@+id/star2"
+            android:id="@+id/star2_home"
             style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/star3"
-            app:layout_constraintEnd_toStartOf="@+id/star3"
-            app:layout_constraintStart_toEndOf="@+id/star1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/star3_home"
+            app:layout_constraintStart_toEndOf="@+id/star1_home"
 
-            app:layout_constraintTop_toBottomOf="@+id/type"
             app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
-            android:id="@+id/star3"
+            android:id="@+id/star3_home"
             style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/star4"
-
-            app:layout_constraintEnd_toStartOf="@+id/star4"
-            app:layout_constraintStart_toEndOf="@+id/star2"
-            app:layout_constraintTop_toBottomOf="@+id/type"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/star4_home"
+            app:layout_constraintStart_toEndOf="@+id/star2_home"
             app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
-            android:id="@+id/star4"
+            android:id="@+id/star4_home"
             style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/star5"
-
-            app:layout_constraintEnd_toStartOf="@+id/star5"
-            app:layout_constraintStart_toEndOf="@+id/star3"
-            app:layout_constraintTop_toBottomOf="@+id/type"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/star5_home"
+            app:layout_constraintStart_toEndOf="@+id/star3_home"
             app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
-            android:id="@+id/star5"
+            android:id="@+id/star5_home"
             style="@style/starStyle_constraint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@id/review"
-            app:layout_constraintStart_toEndOf="@+id/star4"
-            app:layout_constraintTop_toBottomOf="@+id/type"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/review_home"
+            app:layout_constraintStart_toEndOf="@+id/star4_home"
             app:srcCompat="@drawable/ic_s_off" />
 
         <TextView
-            android:id="@+id/review"
+            android:id="@+id/review_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_4"
             android:textColor="@color/black_two"
             android:textSize="@dimen/font_12"
-            app:layout_constraintBottom_toBottomOf="@id/star5"
-            app:layout_constraintStart_toEndOf="@id/star5"
-            app:layout_constraintTop_toTopOf="@+id/star5"
+            app:layout_constraintBottom_toBottomOf="@id/star5_home"
+            app:layout_constraintStart_toEndOf="@id/star5_home"
+            app:layout_constraintTop_toTopOf="@+id/star5_home"
             tools:text="2.9" />
 
 

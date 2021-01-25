@@ -46,7 +46,7 @@
             tools:src="@drawable/ic_wifi_off" />
 
         <ProgressBar
-            android:id="@+id/pg_bar"
+            android:id="@+id/pg_bar_home"
             android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

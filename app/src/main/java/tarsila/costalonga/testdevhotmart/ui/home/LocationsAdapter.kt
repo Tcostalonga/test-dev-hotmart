@@ -8,43 +8,61 @@ import kotlinx.android.synthetic.main.list_item.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.model.Locations
 
-class LocationsAdapter : RecyclerView.Adapter<LocationsAdapter.LocationsViewHolder>() {
+class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHolder>() {
 
     var data = listOf<Locations>()
 
-    class LocationsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    lateinit var clicksAcao: ClicksAcao
+
+    inner class LocationsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Locations) {
 
-            itemView.name.text = item.name
-            itemView.type.text = item.type
-            itemView.review.text = item.review.toString()
+            //ClickListener
+            itemView.card_home.setOnClickListener {
+                clicksAcao.onClick(item.id)
+            }
+
+            itemView.name_home.text = item.name
+            itemView.type_home.text = item.type
+            itemView.review_home.text = item.review.toString()
 
             when (item.review) {
-                in 0.0..1.9 -> {
-                    itemView.star1.setImageResource(R.drawable.ic_s_on)
+
+                in 0.1f..1.9f -> {
+                    itemView.star1_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star2_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star3_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star4_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star5_home.setImageResource(R.drawable.ic_s_off)
                 }
-                in 2.0..2.9 -> {
-                    itemView.star1.setImageResource(R.drawable.ic_s_on)
-                    itemView.star2.setImageResource(R.drawable.ic_s_on)
+                in 2.0f..2.9f-> {
+                    itemView.star1_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star2_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star3_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star4_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star5_home.setImageResource(R.drawable.ic_s_off)
                 }
-                in 3.0..3.9 -> {
-                    itemView.star1.setImageResource(R.drawable.ic_s_on)
-                    itemView.star2.setImageResource(R.drawable.ic_s_on)
-                    itemView.star3.setImageResource(R.drawable.ic_s_on)
+                in 3.0f..3.9f-> {
+                    itemView.star1_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star2_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star3_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star4_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star5_home.setImageResource(R.drawable.ic_s_off)
                 }
-                in 4.0..4.9 -> {
-                    itemView.star1.setImageResource(R.drawable.ic_s_on)
-                    itemView.star2.setImageResource(R.drawable.ic_s_on)
-                    itemView.star3.setImageResource(R.drawable.ic_s_on)
-                    itemView.star4.setImageResource(R.drawable.ic_s_on)
+                in 4.0f..4.9f -> {
+                    itemView.star1_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star2_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star3_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star4_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star5_home.setImageResource(R.drawable.ic_s_off)
                 }
-                else -> {
-                    itemView.star1.setImageResource(R.drawable.ic_s_on)
-                    itemView.star2.setImageResource(R.drawable.ic_s_on)
-                    itemView.star3.setImageResource(R.drawable.ic_s_on)
-                    itemView.star4.setImageResource(R.drawable.ic_s_on)
-                    itemView.star5.setImageResource(R.drawable.ic_s_on)
+               5.0f -> {
+                    itemView.star1_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star2_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star3_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star4_home.setImageResource(R.drawable.ic_s_on)
+                    itemView.star5_home.setImageResource(R.drawable.ic_s_on)
                 }
             }
         }
@@ -62,8 +80,13 @@ class LocationsAdapter : RecyclerView.Adapter<LocationsAdapter.LocationsViewHold
     }
 
 
-    override fun onBindViewHolder(holder: LocationsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LocationsAdapter.LocationsViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
     }
+
+}
+
+interface ClicksAcao {
+    fun onClick(id: Int)
 }

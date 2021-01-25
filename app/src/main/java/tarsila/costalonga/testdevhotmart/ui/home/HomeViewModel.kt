@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import tarsila.costalonga.testdevhotmart.model.DetailLocation
 import tarsila.costalonga.testdevhotmart.model.ListLocations
 import tarsila.costalonga.testdevhotmart.network.LocationAPI
 import tarsila.costalonga.testdevhotmart.utils.*
@@ -16,9 +15,6 @@ class HomeViewModel @ViewModelInject constructor(private val locationAPI: Locati
 
     private val _locations = MutableLiveData<ListLocations>()
     val locations: LiveData<ListLocations> = _locations
-
-    private val _detailocation = MutableLiveData<DetailLocation>()
-    val detailocation: LiveData<DetailLocation> = _detailocation
 
     private val _statusRequest = MutableLiveData<Status>()
     val statusRequest: LiveData<Status>
@@ -40,11 +36,10 @@ class HomeViewModel @ViewModelInject constructor(private val locationAPI: Locati
             }
         } catch (e: Exception) {
             Resource.error(NOT_CONNECTED_REQUEST, null)
-
         }
     }
 
-    fun requestLocationsAPI() {
+    fun requestLocations() {
         viewModelScope.launch {
             val makeRequestLocationsApi = makeRequestLocationsAPI()
             msg = makeRequestLocationsApi.message
@@ -52,32 +47,5 @@ class HomeViewModel @ViewModelInject constructor(private val locationAPI: Locati
 
         }
     }
-
-
-    suspend fun makeRequestDetailLocationAPI(id: Int): Resource<DetailLocation> {
-        return try {
-            val retornoDetailLocation = locationAPI.getDetailsLocation(id)
-
-            if (retornoDetailLocation.isSuccessful) {
-                retornoDetailLocation.body()?.let {
-                    _detailocation.value = retornoDetailLocation.body()
-                    return@let Resource.success(retornoDetailLocation.body())
-                } ?: Resource.error(EMPTY_BODY_REQUEST, null)
-            } else {
-                Resource.error(NOT_FOUND_REQUEST, null)
-            }
-        } catch (e: Exception) {
-            Resource.error(NOT_CONNECTED_REQUEST, null)
-        }
-    }
-
-
-    fun requestDetailsResponse(id: Int) {
-        viewModelScope.launch {
-            makeRequestDetailLocationAPI(id)
-
-        }
-    }
-
 
 }
