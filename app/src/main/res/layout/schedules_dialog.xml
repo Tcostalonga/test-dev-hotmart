@@ -21,14 +21,14 @@
 
             <TextView
                 android:id="@+id/empty"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="" />
 
             <TextView
                 android:id="@+id/open"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/open"
@@ -36,7 +36,7 @@
 
             <TextView
                 android:id="@+id/close"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/close"
@@ -46,28 +46,26 @@
         <TableRow
             android:id="@+id/two_row"
             style="@style/rows_style"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/monday"
-
-                style="@style/fields_style"
+                style="@style/days_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/monday" />
 
             <TextView
                 android:id="@+id/open_monday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
 
             <TextView
                 android:id="@+id/close_monday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
@@ -81,21 +79,21 @@
 
             <TextView
                 android:id="@+id/tuesday"
-                style="@style/fields_style"
+                style="@style/days_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tuesday" />
 
             <TextView
                 android:id="@+id/open_tuesday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
 
             <TextView
                 android:id="@+id/close_tuesday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
@@ -110,21 +108,21 @@
 
             <TextView
                 android:id="@+id/wednesday"
-                style="@style/fields_style"
+                style="@style/days_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wednesday" />
 
             <TextView
                 android:id="@+id/open_wednesday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
 
             <TextView
                 android:id="@+id/close_wednesday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
@@ -139,22 +137,21 @@
 
             <TextView
                 android:id="@+id/thursday"
-                style="@style/fields_style"
+                style="@style/days_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/thursday" />
 
             <TextView
                 android:id="@+id/open_thursday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
 
             <TextView
                 android:id="@+id/close_thursday"
-
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
@@ -168,21 +165,21 @@
 
             <TextView
                 android:id="@+id/friday"
-                style="@style/fields_style"
+                style="@style/days_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/friday" />
 
             <TextView
                 android:id="@+id/open_friday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
 
             <TextView
                 android:id="@+id/close_friday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
@@ -196,21 +193,21 @@
 
             <TextView
                 android:id="@+id/saturday"
-                style="@style/fields_style"
+                style="@style/days_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/saturday" />
 
             <TextView
                 android:id="@+id/open_saturday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
 
             <TextView
                 android:id="@+id/close_saturday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
@@ -224,21 +221,21 @@
 
             <TextView
                 android:id="@+id/sunday"
-                style="@style/fields_style"
+                style="@style/days_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sunday" />
 
             <TextView
                 android:id="@+id/open_sunday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />
 
             <TextView
                 android:id="@+id/close_sunday"
-                style="@style/fields_style"
+                style="@style/time_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="13h" />

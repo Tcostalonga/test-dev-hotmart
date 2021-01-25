@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.schedules_dialog.view.*
+import tarsila.costalonga.testdevhotmart.MainActivity
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentDetailsBinding
 import tarsila.costalonga.testdevhotmart.utils.Status
@@ -29,7 +30,12 @@ class DetailsFragment : Fragment() {
 
     private lateinit var layoutDialog: View
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+        (requireActivity() as MainActivity).supportActionBar?.hide()
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +47,8 @@ class DetailsFragment : Fragment() {
 
         controlItemsViewVisibilityDetail()
         setItemsOnUI()
+
+      //  (requireActivity() as MainActivity).supportActionBar?.hide()
 
         binding.backArrowDetails.setOnClickListener {
             findNavController().navigate(DetailsFragmentDirections.actionDetailsFragmentToHomeFragment())

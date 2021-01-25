@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     //list_item.xml
     <style name="myCardStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/margin_16</item>
@@ -43,7 +42,16 @@
 
 
     //schedules_dialogs.xml
-    <style name="fields_style" >
+    <style name="time_style" >
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black_two</item>
+        <item name="android:layout_margin">@dimen/margin_4</item>
+        <item name="android:paddingStart">@dimen/margin_4</item>
+
+    </style>
+    //schedules_dialogs.xml
+    <style name="days_style" >
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:textColor">@color/black_two</item>
         <item name="android:layout_margin">@dimen/margin_4</item>

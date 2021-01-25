@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import tarsila.costalonga.testdevhotmart.MainActivity
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentHomeBinding
 import tarsila.costalonga.testdevhotmart.utils.EMPTY_BODY_REQUEST
@@ -33,6 +34,8 @@ class HomeFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         Log.i("HomeFragment", "Chamou on create view ")
+
+        (requireActivity() as MainActivity).supportActionBar?.show()
 
         setRecyclerView()
         controlItemsViewVisibility()
