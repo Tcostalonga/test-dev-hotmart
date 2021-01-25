@@ -213,7 +213,7 @@
                         android:textColor="@color/black_two"
                         android:textSize="14sp"
                         android:textStyle="normal"
-                        tools:text="seg a sex: 7h às 23h sáb e dom: 8h às 20h" />
+                        android:text="@string/txt_label_schedule" />
 
 
                     <ImageView

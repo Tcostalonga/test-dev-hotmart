@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:id="@+id/simpleTableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:id="@+id/one_row"
+            style="@style/rows_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/empty"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/open"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/close"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/close"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/two_row"
+            style="@style/rows_style"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/monday"
+
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monday" />
+
+            <TextView
+                android:id="@+id/open_monday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+            <TextView
+                android:id="@+id/close_monday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/three_row"
+            style="@style/rows_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tuesday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tuesday" />
+
+            <TextView
+                android:id="@+id/open_tuesday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+            <TextView
+                android:id="@+id/close_tuesday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/four_row"
+            style="@style/rows_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/wednesday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wednesday" />
+
+            <TextView
+                android:id="@+id/open_wednesday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+            <TextView
+                android:id="@+id/close_wednesday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/five_row"
+            style="@style/rows_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/thursday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/thursday" />
+
+            <TextView
+                android:id="@+id/open_thursday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+            <TextView
+                android:id="@+id/close_thursday"
+
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/six_row"
+            style="@style/rows_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/friday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/friday" />
+
+            <TextView
+                android:id="@+id/open_friday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+            <TextView
+                android:id="@+id/close_friday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/seven_row"
+            style="@style/rows_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/saturday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/saturday" />
+
+            <TextView
+                android:id="@+id/open_saturday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+            <TextView
+                android:id="@+id/close_saturday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/eight_row"
+            style="@style/rows_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/sunday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sunday" />
+
+            <TextView
+                android:id="@+id/open_sunday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+
+            <TextView
+                android:id="@+id/close_sunday"
+                style="@style/fields_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h" />
+        </TableRow>
+
+    </TableLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ok_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/margin_16"
+        android:text="@string/ok"
+        android:textColor="@android:color/white" />
+</LinearLayout>

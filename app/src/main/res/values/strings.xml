@@ -2,6 +2,7 @@
     <string name="app_name">Test Dev Hotmart</string>
     <string name="hello_blank_fragment">Hello HOME fragment</string>
     <string name="restaurante">Restaurante</string>
+    <string name="ok">Ok</string>
 
 
     //bottom_navig_menu.xml
@@ -11,4 +12,15 @@
     <string name="txt_label_fotos">FOTOS</string>
     <string name="txt_label_sobre">SOBRE</string>
     <string name="share_text">Não disponível ainda</string>
+    <string name="schedule_time">Horários de funcionamento</string>
+    <string name="monday">Segunda-feira</string>
+    <string name="tuesday">Terça-feira</string>
+    <string name="wednesday">Quarta-feira</string>
+    <string name="open">Abre</string>
+    <string name="close">Fecha</string>
+    <string name="thursday">Quinta-feira</string>
+    <string name="friday">Sexta-feira</string>
+    <string name="saturday">Sábado</string>
+    <string name="sunday">Domingo</string>
+    <string name="txt_label_schedule">Consultar horário de funcionamento</string>
 </resources>

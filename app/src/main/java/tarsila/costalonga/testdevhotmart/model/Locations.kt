@@ -29,16 +29,16 @@ data class DetailLocation(
 )
 
 data class Schedule(
-    @SerializedName("monday") val monday: Timing,
-    @SerializedName("tuesday") val tuesday: Timing,
-    @SerializedName("wednesday") val wednesday: Timing,
-    @SerializedName("thursday") val thursday: Timing,
-    @SerializedName("friday") val friday: Timing,
-    @SerializedName("saturday") val saturday: Timing,
-    @SerializedName("sunday") val sunday: Timing,
+    @SerializedName("monday") val monday: Timing = Timing(),
+    @SerializedName("tuesday") val tuesday: Timing= Timing(),
+    @SerializedName("wednesday") val wednesday: Timing= Timing(),
+    @SerializedName("thursday") val thursday: Timing= Timing(),
+    @SerializedName("friday") val friday: Timing= Timing(),
+    @SerializedName("saturday") val saturday: Timing= Timing(),
+    @SerializedName("sunday") val sunday: Timing= Timing(),
 )
 
 data class Timing(
-    @SerializedName("open") val open: String,
-    @SerializedName("close") val close: String
+    @SerializedName("open") val open: String="-",
+    @SerializedName("close") val close: String="-"
 )

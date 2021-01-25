@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.schedules_dialog.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentDetailsBinding
 import tarsila.costalonga.testdevhotmart.utils.Status
@@ -24,6 +26,9 @@ class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
 
     var idDetail = 0
+
+    private lateinit var layoutDialog: View
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,14 +54,54 @@ class DetailsFragment : Fragment() {
             ).show()
         }
 
-
+        showScheduleDialog()
         return binding.root
     }
+
+    private fun showScheduleDialog() {
+
+        binding.schedulesDetails.setOnClickListener {
+
+            val layoutDialog =
+                LayoutInflater.from(requireContext()).inflate(R.layout.schedules_dialog, null)
+
+            val mBuilder = AlertDialog.Builder(requireContext())
+                .setView(layoutDialog)
+              .setTitle(getString(R.string.schedule_time))
+
+            viewModel.detailLocation.observe(viewLifecycleOwner, Observer {
+                layoutDialog.open_monday.text = it.schedule.monday.open
+                layoutDialog.close_monday.text = it.schedule.monday.close
+                layoutDialog.open_tuesday.text = it.schedule.tuesday.open
+                layoutDialog.close_tuesday.text = it.schedule.tuesday.close
+                layoutDialog.open_wednesday.text = it.schedule.wednesday.open
+                layoutDialog.close_wednesday.text = it.schedule.wednesday.close
+                layoutDialog.open_thursday.text = it.schedule.thursday.open
+                layoutDialog.close_thursday.text = it.schedule.thursday.close
+                layoutDialog.open_friday.text = it.schedule.friday.open
+                layoutDialog.close_friday.text = it.schedule.friday.close
+                layoutDialog.open_saturday.text = it.schedule.saturday.open
+                layoutDialog.close_saturday.text = it.schedule.saturday.close
+                layoutDialog.open_sunday.text = it.schedule.sunday.open
+                layoutDialog.close_sunday.text = it.schedule.sunday.close
+
+            })
+
+            val mAlertDialog = mBuilder.show()
+            layoutDialog.ok_button.setOnClickListener {
+
+                mAlertDialog.dismiss()
+            }
+        }
+
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.requestDetails(idDetail)
-
+        layoutDialog =
+            LayoutInflater.from(requireContext()).inflate(R.layout.schedules_dialog, null)
     }
 
     private fun setItemsOnUI() {
@@ -105,28 +150,28 @@ class DetailsFragment : Fragment() {
     }
 
 
-private fun controlItemsViewVisibilityDetail() {
+    private fun controlItemsViewVisibilityDetail() {
 
-    viewModel.statusRequestDetail.observe(viewLifecycleOwner, Observer {
-        when (it) {
-            Status.SUCCESS -> {
-                binding.nestedDetails.visibility = View.VISIBLE
-                binding.pgBarDetails.visibility = View.GONE
-            }
-            Status.ERROR -> {
-
-                binding.pgBarDetails.visibility = View.GONE
-                binding.nestedDetails.visibility = View.GONE
-                binding.txtErrorDetails.visibility = View.VISIBLE
-
-                viewModel.msgDetail?.let { msg ->
-                    binding.txtErrorDetails.text = msg
+        viewModel.statusRequestDetail.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                Status.SUCCESS -> {
+                    binding.nestedDetails.visibility = View.VISIBLE
+                    binding.pgBarDetails.visibility = View.GONE
                 }
+                Status.ERROR -> {
+
+                    binding.pgBarDetails.visibility = View.GONE
+                    binding.nestedDetails.visibility = View.GONE
+                    binding.txtErrorDetails.visibility = View.VISIBLE
+
+                    viewModel.msgDetail?.let { msg ->
+                        binding.txtErrorDetails.text = msg
+                    }
+                }
+                else -> binding.pgBarDetails.visibility = View.VISIBLE
             }
-            else -> binding.pgBarDetails.visibility = View.VISIBLE
-        }
-    })
-}
+        })
+    }
 }
 
 
