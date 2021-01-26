@@ -9,7 +9,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import tarsila.costalonga.testdevhotmart.network.ImagesAPI
 import tarsila.costalonga.testdevhotmart.network.LocationAPI
+import tarsila.costalonga.testdevhotmart.utils.BASE_URL_IMAGES_API
 import tarsila.costalonga.testdevhotmart.utils.BASE_URL_LOCATION_API
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -28,6 +30,17 @@ object ModuleAPI {
             .client(okHttpClient())
             .build()
             .create(LocationAPI::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideImagesAPI(): ImagesAPI {
+        return  Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .baseUrl(BASE_URL_IMAGES_API)
+            .client(okHttpClient())
+            .build()
+            .create(ImagesAPI::class.java)
     }
 
 

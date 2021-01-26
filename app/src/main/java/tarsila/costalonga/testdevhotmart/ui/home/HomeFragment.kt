@@ -28,6 +28,9 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     lateinit var adapter: LocationsAdapter
 
+    var qntItensLocations: Int = 0
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,25 +45,36 @@ class HomeFragment : Fragment() {
 
         viewModel.locations.observe(viewLifecycleOwner, Observer {
             adapter.data = it.listLocations
-            adapter.notifyDataSetChanged()
-            Log.i("HomeFragment", "${it.listLocations[0].review}")
+
+            //Pegar num de itens da lista de locais e pessquisar a msm qnt em imagens
+            qntItensLocations = it.listLocations.size
+
+            if (qntItensLocations > 3) {
+                viewModel.requestImages(qntItensLocations)
+            }
+
+         /*   it.listLocations.forEachIndexed { index, locations ->
+
+                locations.img = viewModel.images.hits[index].imgURL
+            }*/
+
+
+
+
+
+
+            Log.i("HomeFragment", "${it.listLocations.size}")
         })
+
+
+
+
+
+
         viewModel.requestLocations()
         return binding.root
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.i("HomeFragment", "Chamou on create")
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.i("HomeFragment", "Chamou onStart")
-
-    }
 
     private fun controlItemsViewVisibility() {
 
@@ -100,10 +114,10 @@ class HomeFragment : Fragment() {
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.recView.adapter = adapter
 
-        adapter.clicksAcao = object : ClicksAcao{
+        adapter.clicksAcao = object : ClicksAcao {
             override fun onClick(id: Int) {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(id))
-             }
+            }
         }
     }
 

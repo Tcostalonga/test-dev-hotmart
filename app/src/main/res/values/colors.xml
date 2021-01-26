@@ -7,8 +7,8 @@
     <color name="black_two">#000000</color>
     <color name="golden_yellow">#FFC71E</color>
 
-    <color name="duck_egg_blue">#D0FDEF</color>
-    <color name="light_pink">#FFDAE0</color>
+    <color name="duckEggBlue">#D0FDEF</color>
+    <color name="lightPink">#FFDAE0</color>
     <color name="creme">#FCFFB1</color>
 
 </resources>

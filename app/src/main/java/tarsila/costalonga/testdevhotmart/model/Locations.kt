@@ -12,6 +12,7 @@ data class ListLocations(
 @Parcelize
 data class Locations(
     @SerializedName("id") val id: Int,
+    @SerializedName("img") var img: String="",
     @SerializedName("name") val name: String,
     @SerializedName("review") val review: Float,
     @SerializedName("type") val type: String,
@@ -42,3 +43,6 @@ data class Timing(
     @SerializedName("open") val open: String="-",
     @SerializedName("close") val close: String="-"
 )
+
+
+

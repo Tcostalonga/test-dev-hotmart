@@ -3,14 +3,22 @@ package tarsila.costalonga.testdevhotmart.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.model.Locations
+import tarsila.costalonga.testdevhotmart.utils.getRandomColor
 
 class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHolder>() {
 
     var data = listOf<Locations>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
 
     lateinit var clicksAcao: ClicksAcao
 
@@ -27,8 +35,23 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
             itemView.type_home.text = item.type
             itemView.review_home.text = item.review.toString()
 
-            when (item.review) {
+            val imgUri = "".toUri().buildUpon().scheme("https").build()
+            Picasso.get()
+                .load(imgUri)
+                .placeholder(getRandomColor())
+                .error(getRandomColor())
+                .fit()
+                .centerCrop()
+                .into(itemView.img_home)
 
+            when (item.review) {
+                0.0f -> {
+                    itemView.star1_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star2_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star3_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star4_home.setImageResource(R.drawable.ic_s_off)
+                    itemView.star5_home.setImageResource(R.drawable.ic_s_off)
+                }
                 in 0.1f..1.9f -> {
                     itemView.star1_home.setImageResource(R.drawable.ic_s_on)
                     itemView.star2_home.setImageResource(R.drawable.ic_s_off)
@@ -36,14 +59,14 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
                     itemView.star4_home.setImageResource(R.drawable.ic_s_off)
                     itemView.star5_home.setImageResource(R.drawable.ic_s_off)
                 }
-                in 2.0f..2.9f-> {
+                in 2.0f..2.9f -> {
                     itemView.star1_home.setImageResource(R.drawable.ic_s_on)
                     itemView.star2_home.setImageResource(R.drawable.ic_s_on)
                     itemView.star3_home.setImageResource(R.drawable.ic_s_off)
                     itemView.star4_home.setImageResource(R.drawable.ic_s_off)
                     itemView.star5_home.setImageResource(R.drawable.ic_s_off)
                 }
-                in 3.0f..3.9f-> {
+                in 3.0f..3.9f -> {
                     itemView.star1_home.setImageResource(R.drawable.ic_s_on)
                     itemView.star2_home.setImageResource(R.drawable.ic_s_on)
                     itemView.star3_home.setImageResource(R.drawable.ic_s_on)
@@ -57,7 +80,7 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
                     itemView.star4_home.setImageResource(R.drawable.ic_s_on)
                     itemView.star5_home.setImageResource(R.drawable.ic_s_off)
                 }
-               5.0f -> {
+                5.0f -> {
                     itemView.star1_home.setImageResource(R.drawable.ic_s_on)
                     itemView.star2_home.setImageResource(R.drawable.ic_s_on)
                     itemView.star3_home.setImageResource(R.drawable.ic_s_on)

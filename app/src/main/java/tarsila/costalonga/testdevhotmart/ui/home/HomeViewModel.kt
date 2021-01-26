@@ -6,11 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import tarsila.costalonga.testdevhotmart.model.Images
 import tarsila.costalonga.testdevhotmart.model.ListLocations
+import tarsila.costalonga.testdevhotmart.network.ImagesAPI
 import tarsila.costalonga.testdevhotmart.network.LocationAPI
 import tarsila.costalonga.testdevhotmart.utils.*
 
-class HomeViewModel @ViewModelInject constructor(private val locationAPI: LocationAPI) :
+class HomeViewModel @ViewModelInject constructor(
+    private val locationAPI: LocationAPI,
+    private val imagesAPI: ImagesAPI
+) :
     ViewModel() {
 
     private val _locations = MutableLiveData<ListLocations>()
@@ -19,6 +24,9 @@ class HomeViewModel @ViewModelInject constructor(private val locationAPI: Locati
     private val _statusRequest = MutableLiveData<Status>()
     val statusRequest: LiveData<Status>
         get() = _statusRequest
+
+    var images = Images()
+
 
     var msg: String? = null
 
@@ -44,8 +52,26 @@ class HomeViewModel @ViewModelInject constructor(private val locationAPI: Locati
             val makeRequestLocationsApi = makeRequestLocationsAPI()
             msg = makeRequestLocationsApi.message
             _statusRequest.value = makeRequestLocationsApi.status
+        }
+    }
+
+
+    private suspend fun makeRequestImagesAPI(qntImg: Int) {
+
+        val retornoImgs = imagesAPI.getImages(qntImg)
+
+        retornoImgs.body()?.let {
+            images = it
+        }
+    }
+
+
+    fun requestImages(qntImg: Int) {
+        viewModelScope.launch {
+            val makeRequestImagesAPI = makeRequestImagesAPI(qntImg)
 
         }
     }
+
 
 }
