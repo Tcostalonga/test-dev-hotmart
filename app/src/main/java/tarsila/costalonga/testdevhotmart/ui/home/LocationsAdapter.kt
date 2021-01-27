@@ -35,14 +35,13 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
             itemView.type_home.text = item.type
             itemView.review_home.text = item.review.toString()
 
-            val imgUri = "".toUri().buildUpon().scheme("https").build()
-            Picasso.get()
-                .load(imgUri)
-                .placeholder(getRandomColor())
-                .error(getRandomColor())
-                .fit()
-                .centerCrop()
-                .into(itemView.img_home)
+            item.img?.let {
+                val imgUri = (item.img ?: "").toUri().buildUpon().scheme("https").build()
+                Picasso.get()
+                    .load(imgUri)
+                    .error(getRandomColor())
+                    .into(itemView.img_home)
+            }
 
             when (item.review) {
                 0.0f -> {
@@ -91,7 +90,10 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationsViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): LocationsAdapter.LocationsViewHolder {
         val item =
             LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return LocationsViewHolder(item)

@@ -13,10 +13,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.error_layout.view.*
 import kotlinx.android.synthetic.main.schedules_dialog.view.*
 import tarsila.costalonga.testdevhotmart.MainActivity
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentDetailsBinding
+import tarsila.costalonga.testdevhotmart.utils.EMPTY_INVALID_REQUEST
+import tarsila.costalonga.testdevhotmart.utils.NOT_CONNECTED_REQUEST
+import tarsila.costalonga.testdevhotmart.utils.NOT_FOUND_REQUEST
 import tarsila.costalonga.testdevhotmart.utils.Status
 
 @AndroidEntryPoint
@@ -36,11 +40,14 @@ class DetailsFragment : Fragment() {
         (requireActivity() as MainActivity).supportActionBar?.hide()
 
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
+        // binding.lifecycleOwner = viewLifecycleOwner
+        //  binding.view = viewModel
 
         idDetail = DetailsFragmentArgs.fromBundle(requireArguments()).id
         Log.i("HomeFragment", "$idDetail")
@@ -48,10 +55,10 @@ class DetailsFragment : Fragment() {
         controlItemsViewVisibilityDetail()
         setItemsOnUI()
 
-      //  (requireActivity() as MainActivity).supportActionBar?.hide()
+        //  (requireActivity() as MainActivity).supportActionBar?.hide()
 
         binding.backArrowDetails.setOnClickListener {
-            findNavController().navigate(DetailsFragmentDirections.actionDetailsFragmentToHomeFragment())
+            findNavController().popBackStack()
         }
 
         binding.shareDetails.setOnClickListener {
@@ -75,7 +82,7 @@ class DetailsFragment : Fragment() {
 
             val mBuilder = AlertDialog.Builder(requireContext())
                 .setView(layoutDialog)
-              .setTitle(getString(R.string.schedule_time))
+                .setTitle(getString(R.string.schedule_time))
 
             viewModel.detailLocation.observe(viewLifecycleOwner, Observer {
                 layoutDialog.open_monday.text = it.schedule.monday.open
@@ -92,7 +99,6 @@ class DetailsFragment : Fragment() {
                 layoutDialog.close_saturday.text = it.schedule.saturday.close
                 layoutDialog.open_sunday.text = it.schedule.sunday.open
                 layoutDialog.close_sunday.text = it.schedule.sunday.close
-
             })
 
             val mAlertDialog = mBuilder.show()
@@ -101,9 +107,7 @@ class DetailsFragment : Fragment() {
                 mAlertDialog.dismiss()
             }
         }
-
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -121,8 +125,6 @@ class DetailsFragment : Fragment() {
             binding.phoneDetails.text = it.phone
             binding.addressDetails.text = it.address
             setStarsColors(it.review)
-
-
         })
     }
 
@@ -164,19 +166,30 @@ class DetailsFragment : Fragment() {
             when (it) {
                 Status.SUCCESS -> {
                     binding.nestedDetails.visibility = View.VISIBLE
-                    binding.pgBarDetails.visibility = View.GONE
+                    binding.errorLytDetails.pg_bar_home.visibility = View.GONE
+                    binding.errorLytDetails.img_error.visibility = View.GONE
+                    binding.errorLytDetails.txt_error.visibility = View.GONE
+
                 }
                 Status.ERROR -> {
 
-                    binding.pgBarDetails.visibility = View.GONE
+                    binding.errorLytDetails.pg_bar_home.visibility = View.GONE
                     binding.nestedDetails.visibility = View.GONE
-                    binding.txtErrorDetails.visibility = View.VISIBLE
+                    binding.errorLytDetails.txt_error.visibility = View.VISIBLE
+
+                    binding.errorLytDetails.img_error.visibility = View.VISIBLE
 
                     viewModel.msgDetail?.let { msg ->
-                        binding.txtErrorDetails.text = msg
+                        binding.errorLytDetails.txt_error.text = msg
                     }
+                    when (viewModel.msgDetail) {
+                        EMPTY_INVALID_REQUEST -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
+                        NOT_FOUND_REQUEST -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
+                        NOT_CONNECTED_REQUEST -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_wifi_off)
+                    }
+
                 }
-                else -> binding.pgBarDetails.visibility = View.VISIBLE
+                else -> binding.errorLytDetails.pg_bar_home.visibility = View.VISIBLE
             }
         })
     }

@@ -1,16 +1,19 @@
 package tarsila.costalonga.testdevhotmart.ui.home
 
+import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.JsonParseException
 import kotlinx.coroutines.launch
 import tarsila.costalonga.testdevhotmart.model.Images
 import tarsila.costalonga.testdevhotmart.model.ListLocations
 import tarsila.costalonga.testdevhotmart.network.ImagesAPI
 import tarsila.costalonga.testdevhotmart.network.LocationAPI
 import tarsila.costalonga.testdevhotmart.utils.*
+import java.net.UnknownHostException
 
 class HomeViewModel @ViewModelInject constructor(
     private val locationAPI: LocationAPI,
@@ -25,10 +28,16 @@ class HomeViewModel @ViewModelInject constructor(
     val statusRequest: LiveData<Status>
         get() = _statusRequest
 
-    var images = Images()
+    var _images = MutableLiveData<Images>()
+    val images: LiveData<Images> = _images
 
 
-    var msg: String? = null
+    var msgHome: String? = null
+
+    init {
+        requestLocations()
+Log.i("Home", "init")
+    }
 
     private suspend fun makeRequestLocationsAPI(): Resource<ListLocations> {
         return try {
@@ -38,19 +47,23 @@ class HomeViewModel @ViewModelInject constructor(
                 retornoLocations.body()?.let {
                     _locations.value = retornoLocations.body()
                     return@let Resource.success(retornoLocations.body())
-                } ?: Resource.error(EMPTY_BODY_REQUEST, null)
+                } ?: Resource.error(EMPTY_INVALID_REQUEST, null)
             } else {
                 Resource.error(NOT_FOUND_REQUEST, null)
             }
-        } catch (e: Exception) {
+        } catch (e: UnknownHostException) {
             Resource.error(NOT_CONNECTED_REQUEST, null)
+        } catch (e: JsonParseException) {
+            Resource.error(EMPTY_INVALID_REQUEST, null)
+        } catch (e: Exception) {
+            Resource.error(NOT_FOUND_REQUEST, null)
         }
     }
 
     fun requestLocations() {
         viewModelScope.launch {
             val makeRequestLocationsApi = makeRequestLocationsAPI()
-            msg = makeRequestLocationsApi.message
+            msgHome = makeRequestLocationsApi.message
             _statusRequest.value = makeRequestLocationsApi.status
         }
     }
@@ -58,10 +71,14 @@ class HomeViewModel @ViewModelInject constructor(
 
     private suspend fun makeRequestImagesAPI(qntImg: Int) {
 
-        val retornoImgs = imagesAPI.getImages(qntImg)
+        try {
+            val retornoImgs = imagesAPI.getImages(qntImg)
 
-        retornoImgs.body()?.let {
-            images = it
+            retornoImgs.body()?.let {
+                _images.value = it
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -69,6 +86,7 @@ class HomeViewModel @ViewModelInject constructor(
     fun requestImages(qntImg: Int) {
         viewModelScope.launch {
             val makeRequestImagesAPI = makeRequestImagesAPI(qntImg)
+
 
         }
     }

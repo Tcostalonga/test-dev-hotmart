@@ -4,54 +4,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-    </data>
+    <data></data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_8"
-        android:orientation="vertical"
+
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:gravity="center"
-         tools:context=".ui.home.HomeFragment">
+        android:orientation="vertical"
+        tools:context=".ui.home.HomeFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="2"
-            android:visibility="gone"
-            tools:visibility="visible"
             tools:itemCount="10"
-            tools:listitem="@layout/list_item" />
+            tools:listitem="@layout/list_item"
+            tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/txt_error"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:fontFamily="@font/open_sans_light"
-            android:textSize="@dimen/font_20"
-            android:visibility="gone"
-            android:layout_marginBottom="@dimen/margin_8"
-            tools:text="Verifique sua conexão" />
-
-        <ImageView
-            android:id="@+id/img_error"
-            android:layout_width="wrap_content"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            tools:src="@drawable/ic_wifi_off" />
-
-        <ProgressBar
-            android:id="@+id/pg_bar_home"
-            android:visibility="visible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.ProgressBar"
-            />
+        <include
+            android:id="@+id/error_lyt_home"
+            layout="@layout/error_layout" />
 
     </LinearLayout>
 </layout>

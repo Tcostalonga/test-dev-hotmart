@@ -2,23 +2,18 @@ package tarsila.costalonga.testdevhotmart.ui.details
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.google.gson.JsonParseException
 import kotlinx.coroutines.launch
 import tarsila.costalonga.testdevhotmart.model.DetailLocation
 import tarsila.costalonga.testdevhotmart.network.LocationAPI
-import tarsila.costalonga.testdevhotmart.utils.EMPTY_BODY_REQUEST
-import tarsila.costalonga.testdevhotmart.utils.NOT_FOUND_REQUEST
-import tarsila.costalonga.testdevhotmart.utils.Resource
-import tarsila.costalonga.testdevhotmart.utils.Status
+import tarsila.costalonga.testdevhotmart.utils.*
+import java.net.UnknownHostException
 
 class DetailsViewModel @ViewModelInject constructor(private val locationDetailsAPI: LocationAPI) :
     ViewModel() {
 
     private val _detailLocation = MutableLiveData<DetailLocation>()
     val detailLocation: LiveData<DetailLocation> = _detailLocation
-
-/*
-    var detailResponse : DetailLocation? = null
-*/
 
 
     private val _statusRequestDetail = MutableLiveData<Status>()
@@ -28,30 +23,35 @@ class DetailsViewModel @ViewModelInject constructor(private val locationDetailsA
     var msgDetail: String? = null
 
 
-
-
     private suspend fun makeRequestDetailLocationAPI(id: Int): Resource<DetailLocation> {
 
-        val retornoDetailLocation = locationDetailsAPI.getDetailsLocation(id)
+        return try {
 
-        return if (retornoDetailLocation.isSuccessful) {
-            retornoDetailLocation.body()?.let {
-                _detailLocation.value = retornoDetailLocation.body()
-              //  detailResponse = retornoDetailLocation.body()
-                return@let Resource.success(retornoDetailLocation.body())
-            } ?: Resource.error(EMPTY_BODY_REQUEST, null)
-        } else {
+            val retornoDetailLocation = locationDetailsAPI.getDetailsLocation(id)
+
+            if (retornoDetailLocation.isSuccessful) {
+                retornoDetailLocation.body()?.let {
+                    _detailLocation.value = retornoDetailLocation.body()
+                    //  detailResponse = retornoDetailLocation.body()
+                    return@let Resource.success(retornoDetailLocation.body())
+                } ?: Resource.error(EMPTY_INVALID_REQUEST, null)
+            } else {
+                Resource.error(NOT_FOUND_REQUEST, null)
+            }
+        } catch (e: UnknownHostException) {
+            Resource.error(NOT_CONNECTED_REQUEST, null)
+        } catch (e: JsonParseException) {
+            Resource.error(EMPTY_INVALID_REQUEST, null)
+        } catch (e: Exception) {
             Resource.error(NOT_FOUND_REQUEST, null)
         }
-
     }
-
 
     fun requestDetails(id: Int) {
         viewModelScope.launch {
             val makeRequestDetailLocationAPI = makeRequestDetailLocationAPI(id)
-            _statusRequestDetail.value = makeRequestDetailLocationAPI.status
             msgDetail = makeRequestDetailLocationAPI.message
+            _statusRequestDetail.value = makeRequestDetailLocationAPI.status
         }
     }
 

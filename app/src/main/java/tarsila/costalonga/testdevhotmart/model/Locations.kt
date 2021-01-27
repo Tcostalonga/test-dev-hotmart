@@ -12,7 +12,7 @@ data class ListLocations(
 @Parcelize
 data class Locations(
     @SerializedName("id") val id: Int,
-    @SerializedName("img") var img: String="",
+    var img: String?,
     @SerializedName("name") val name: String,
     @SerializedName("review") val review: Float,
     @SerializedName("type") val type: String,
@@ -31,17 +31,17 @@ data class DetailLocation(
 
 data class Schedule(
     @SerializedName("monday") val monday: Timing = Timing(),
-    @SerializedName("tuesday") val tuesday: Timing= Timing(),
-    @SerializedName("wednesday") val wednesday: Timing= Timing(),
-    @SerializedName("thursday") val thursday: Timing= Timing(),
-    @SerializedName("friday") val friday: Timing= Timing(),
-    @SerializedName("saturday") val saturday: Timing= Timing(),
-    @SerializedName("sunday") val sunday: Timing= Timing(),
+    @SerializedName("tuesday") val tuesday: Timing = Timing(),
+    @SerializedName("wednesday") val wednesday: Timing = Timing(),
+    @SerializedName("thursday") val thursday: Timing = Timing(),
+    @SerializedName("friday") val friday: Timing = Timing(),
+    @SerializedName("saturday") val saturday: Timing = Timing(),
+    @SerializedName("sunday") val sunday: Timing = Timing(),
 )
 
 data class Timing(
-    @SerializedName("open") val open: String="-",
-    @SerializedName("close") val close: String="-"
+    @SerializedName("open") val open: String = "-",
+    @SerializedName("close") val close: String = "-"
 )
 
 
