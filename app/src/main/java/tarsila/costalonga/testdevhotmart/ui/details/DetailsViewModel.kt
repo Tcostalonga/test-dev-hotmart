@@ -4,6 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.google.gson.JsonParseException
 import kotlinx.coroutines.launch
+import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.model.DetailLocation
 import tarsila.costalonga.testdevhotmart.network.LocationAPI
 import tarsila.costalonga.testdevhotmart.utils.*

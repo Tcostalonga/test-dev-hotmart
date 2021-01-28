@@ -1,6 +1,5 @@
 package tarsila.costalonga.testdevhotmart.ui.home
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -36,7 +35,6 @@ class HomeViewModel @ViewModelInject constructor(
 
     init {
         requestLocations()
-Log.i("Home", "init")
     }
 
     private suspend fun makeRequestLocationsAPI(): Resource<ListLocations> {

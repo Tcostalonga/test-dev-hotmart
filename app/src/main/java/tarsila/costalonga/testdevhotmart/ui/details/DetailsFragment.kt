@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.error_layout.view.*
 import kotlinx.android.synthetic.main.schedules_dialog.view.*
@@ -20,10 +22,8 @@ import tarsila.costalonga.testdevhotmart.MainActivity
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentDetailsBinding
 import tarsila.costalonga.testdevhotmart.model.Images
-import tarsila.costalonga.testdevhotmart.utils.EMPTY_INVALID_REQUEST
-import tarsila.costalonga.testdevhotmart.utils.NOT_CONNECTED_REQUEST
-import tarsila.costalonga.testdevhotmart.utils.NOT_FOUND_REQUEST
 import tarsila.costalonga.testdevhotmart.utils.Status
+import tarsila.costalonga.testdevhotmart.utils.getRandomColor
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -36,7 +36,9 @@ class DetailsFragment : Fragment() {
 
     var arrayOfImgsDetails = Images()
 
-    private var adapter: DetailsAdapter = DetailsAdapter()
+    var oneImg: String? = null
+
+    private var adapter: ImagesAdapter = ImagesAdapter()
 
 
     private lateinit var layoutDialog: View
@@ -45,7 +47,6 @@ class DetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         (requireActivity() as MainActivity).supportActionBar?.hide()
-
 
     }
 
@@ -59,7 +60,8 @@ class DetailsFragment : Fragment() {
 
         val args = DetailsFragmentArgs.fromBundle(requireArguments())
         idDetail = args.id
-        arrayOfImgsDetails = args.imgEtails
+        arrayOfImgsDetails = args.imgDetails
+        oneImg = args.oneImg
         adapter.imgsArray = arrayOfImgsDetails
 
         Log.i("HomeFragment", "$arrayOfImgsDetails")
@@ -134,8 +136,19 @@ class DetailsFragment : Fragment() {
             binding.aboutDetails.text = it.about
             binding.phoneDetails.text = it.phone
             binding.addressDetails.text = it.address
+            setImage()
             setStarsColors(it.review)
         })
+    }
+
+    private fun setImage() {
+        oneImg?.let {
+            val imgUri = (oneImg ?: "").toUri().buildUpon().scheme("https").build()
+            Picasso.get()
+                .load(imgUri)
+                .error(getRandomColor())
+                .into(binding.imgDetails)
+        }
     }
 
     private fun setStarsColors(review: Float) {
@@ -193,11 +206,11 @@ class DetailsFragment : Fragment() {
                         binding.errorLytDetails.txt_error.text = msg
                     }
                     when (viewModel.msgDetail) {
-                        EMPTY_INVALID_REQUEST -> binding.errorLytDetails.img_error.setImageResource(
+                        getString(R.string.EMPTY_INVALID_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(
                             R.drawable.ic_lupa_quebrada
                         )
-                        NOT_FOUND_REQUEST -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
-                        NOT_CONNECTED_REQUEST -> binding.errorLytDetails.img_error.setImageResource(
+                        getString(R.string.NOT_FOUND_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
+                        getString(R.string.NOT_CONNECTED_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(
                             R.drawable.ic_wifi_off
                         )
                     }

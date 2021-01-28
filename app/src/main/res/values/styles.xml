@@ -28,7 +28,6 @@
     //fragment_details.xml
     <style name="txt_location" >
         <item name="android:layout_marginBottom">@dimen/margin_20</item>
-        <item name="android:layout_marginStart">@dimen/margin_8</item>
         <item name="android:drawablePadding">@dimen/margin_8</item>
 
     </style>

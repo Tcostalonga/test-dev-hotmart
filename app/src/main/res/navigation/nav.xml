@@ -23,8 +23,12 @@
             android:name="id"
             app:argType="integer" />
         <argument
-            android:name="img_etails"
+            android:name="img_details"
             app:argType="tarsila.costalonga.testdevhotmart.model.Images" />
+        <argument
+            android:name="one_img"
+            app:argType="string"
+               app:nullable="true"/>
 
     </fragment>
 </navigation>

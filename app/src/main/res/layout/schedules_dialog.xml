@@ -16,6 +16,7 @@
         <TableRow
             android:id="@+id/one_row"
             style="@style/rows_style"
+            android:layout_marginTop="@dimen/margin_8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

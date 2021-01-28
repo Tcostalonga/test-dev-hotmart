@@ -17,9 +17,6 @@ import tarsila.costalonga.testdevhotmart.MainActivity
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentHomeBinding
 import tarsila.costalonga.testdevhotmart.model.Images
-import tarsila.costalonga.testdevhotmart.utils.EMPTY_INVALID_REQUEST
-import tarsila.costalonga.testdevhotmart.utils.NOT_CONNECTED_REQUEST
-import tarsila.costalonga.testdevhotmart.utils.NOT_FOUND_REQUEST
 import tarsila.costalonga.testdevhotmart.utils.Status
 
 @AndroidEntryPoint
@@ -87,11 +84,11 @@ class HomeFragment : Fragment() {
                         binding.errorLytHome.txt_error.text = msg
 
                         when (viewModel.msgHome) {
-                            EMPTY_INVALID_REQUEST -> binding.errorLytHome.img_error.setImageResource(
+                            getString(R.string.EMPTY_INVALID_REQUEST) -> binding.errorLytHome.img_error.setImageResource(
                                 R.drawable.ic_lupa_quebrada
                             )
-                            NOT_FOUND_REQUEST -> binding.errorLytHome.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
-                            NOT_CONNECTED_REQUEST -> binding.errorLytHome.img_error.setImageResource(
+                            getString(R.string.NOT_FOUND_REQUEST)  -> binding.errorLytHome.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
+                            getString(R.string.NOT_CONNECTED_REQUEST)  -> binding.errorLytHome.img_error.setImageResource(
                                 R.drawable.ic_wifi_off
                             )
                         }
@@ -115,10 +112,10 @@ class HomeFragment : Fragment() {
         binding.recView.adapter = adapter
 
         adapter.clicksAcao = object : ClicksAcao {
-            override fun onClick(id: Int) {
+            override fun onClick(id: Int, oneImg: String?) {
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
-                        id, arrayOfImgs
+                        id, arrayOfImgs, oneImg
                     )
                 )
             }

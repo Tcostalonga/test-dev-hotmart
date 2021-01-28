@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.list_item_details.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.model.Images
 
-class DetailsAdapter : RecyclerView.Adapter<DetailsAdapter.DetailsImagesViewHolder>() {
+class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.DetailsImagesViewHolder>() {
 
     var imgsArray = Images()
         set(value) {

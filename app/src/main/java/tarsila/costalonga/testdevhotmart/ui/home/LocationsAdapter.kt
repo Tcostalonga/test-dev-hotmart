@@ -28,7 +28,7 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
 
             //ClickListener
             itemView.card_home.setOnClickListener {
-                clicksAcao.onClick(item.id)
+                clicksAcao.onClick(item.id, item.img)
             }
 
             itemView.name_home.text = item.name
@@ -113,5 +113,5 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
 }
 
 interface ClicksAcao {
-    fun onClick(id: Int)
+    fun onClick(id: Int, oneImg : String?)
 }
