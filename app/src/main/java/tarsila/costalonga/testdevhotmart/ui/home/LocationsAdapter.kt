@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.list_item.view.*
+import kotlinx.android.synthetic.main.list_item_home.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.model.Locations
 import tarsila.costalonga.testdevhotmart.utils.getRandomColor
@@ -95,7 +95,7 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
         viewType: Int
     ): LocationsAdapter.LocationsViewHolder {
         val item =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item_home, parent, false)
         return LocationsViewHolder(item)
     }
 

@@ -22,8 +22,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_detailsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+        <argument
+            android:name="img_etails"
+            app:argType="tarsila.costalonga.testdevhotmart.model.Images" />
+
     </fragment>
 </navigation>

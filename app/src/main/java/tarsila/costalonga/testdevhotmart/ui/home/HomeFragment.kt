@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.error_layout.view.*
 import tarsila.costalonga.testdevhotmart.MainActivity
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentHomeBinding
+import tarsila.costalonga.testdevhotmart.model.Images
 import tarsila.costalonga.testdevhotmart.utils.EMPTY_INVALID_REQUEST
 import tarsila.costalonga.testdevhotmart.utils.NOT_CONNECTED_REQUEST
 import tarsila.costalonga.testdevhotmart.utils.NOT_FOUND_REQUEST
@@ -31,6 +32,7 @@ class HomeFragment : Fragment() {
 
 
     var qntItensLocations: Int = 0
+    var arrayOfImgs = Images()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +49,12 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.images.observe(this, Observer {
+            arrayOfImgs = it
             adapter.data.forEachIndexed { index, locations ->
                 locations.img = it.hits[index].imgURL
             }
             adapter.notifyDataSetChanged()
         })
-
     }
 
     override fun onCreateView(
@@ -85,9 +87,13 @@ class HomeFragment : Fragment() {
                         binding.errorLytHome.txt_error.text = msg
 
                         when (viewModel.msgHome) {
-                            EMPTY_INVALID_REQUEST -> binding.errorLytHome.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
+                            EMPTY_INVALID_REQUEST -> binding.errorLytHome.img_error.setImageResource(
+                                R.drawable.ic_lupa_quebrada
+                            )
                             NOT_FOUND_REQUEST -> binding.errorLytHome.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
-                            NOT_CONNECTED_REQUEST -> binding.errorLytHome.img_error.setImageResource(R.drawable.ic_wifi_off)
+                            NOT_CONNECTED_REQUEST -> binding.errorLytHome.img_error.setImageResource(
+                                R.drawable.ic_wifi_off
+                            )
                         }
                     }
                 }
@@ -112,7 +118,7 @@ class HomeFragment : Fragment() {
             override fun onClick(id: Int) {
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
-                        id
+                        id, arrayOfImgs
                     )
                 )
             }

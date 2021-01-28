@@ -12,12 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.error_layout.view.*
 import kotlinx.android.synthetic.main.schedules_dialog.view.*
 import tarsila.costalonga.testdevhotmart.MainActivity
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentDetailsBinding
+import tarsila.costalonga.testdevhotmart.model.Images
 import tarsila.costalonga.testdevhotmart.utils.EMPTY_INVALID_REQUEST
 import tarsila.costalonga.testdevhotmart.utils.NOT_CONNECTED_REQUEST
 import tarsila.costalonga.testdevhotmart.utils.NOT_FOUND_REQUEST
@@ -32,12 +34,18 @@ class DetailsFragment : Fragment() {
 
     var idDetail = 0
 
+    var arrayOfImgsDetails = Images()
+
+    private var adapter: DetailsAdapter = DetailsAdapter()
+
+
     private lateinit var layoutDialog: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         (requireActivity() as MainActivity).supportActionBar?.hide()
+
 
     }
 
@@ -49,14 +57,16 @@ class DetailsFragment : Fragment() {
         // binding.lifecycleOwner = viewLifecycleOwner
         //  binding.view = viewModel
 
-        idDetail = DetailsFragmentArgs.fromBundle(requireArguments()).id
-        Log.i("HomeFragment", "$idDetail")
+        val args = DetailsFragmentArgs.fromBundle(requireArguments())
+        idDetail = args.id
+        arrayOfImgsDetails = args.imgEtails
+        adapter.imgsArray = arrayOfImgsDetails
+
+        Log.i("HomeFragment", "$arrayOfImgsDetails")
 
         controlItemsViewVisibilityDetail()
         setItemsOnUI()
-
-        //  (requireActivity() as MainActivity).supportActionBar?.hide()
-
+        setRecyclerView()
         binding.backArrowDetails.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -183,15 +193,27 @@ class DetailsFragment : Fragment() {
                         binding.errorLytDetails.txt_error.text = msg
                     }
                     when (viewModel.msgDetail) {
-                        EMPTY_INVALID_REQUEST -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
+                        EMPTY_INVALID_REQUEST -> binding.errorLytDetails.img_error.setImageResource(
+                            R.drawable.ic_lupa_quebrada
+                        )
                         NOT_FOUND_REQUEST -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
-                        NOT_CONNECTED_REQUEST -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_wifi_off)
+                        NOT_CONNECTED_REQUEST -> binding.errorLytDetails.img_error.setImageResource(
+                            R.drawable.ic_wifi_off
+                        )
                     }
 
                 }
                 else -> binding.errorLytDetails.pg_bar_home.visibility = View.VISIBLE
             }
         })
+    }
+
+    private fun setRecyclerView() {
+        binding.rcviewHorizontal.layoutManager =
+            GridLayoutManager(requireContext(), 1, GridLayoutManager.HORIZONTAL, false)
+        binding.rcviewHorizontal.adapter = adapter
+
+
     }
 }
 

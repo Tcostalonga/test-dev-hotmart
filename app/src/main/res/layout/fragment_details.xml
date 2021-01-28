@@ -32,7 +32,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <ImageView
                     android:id="@+id/img_details"
                     android:layout_width="match_parent"
@@ -58,9 +57,11 @@
                         android:id="@+id/name_details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_16"
                         android:fontFamily="@font/open_sans_light"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/font_32"
+                        app:layout_constraintBottom_toTopOf="@id/star1_details"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -84,6 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+                        app:layout_constraintEnd_toStartOf="@id/star3_details"
                         app:layout_constraintStart_toEndOf="@+id/star1_details"
                         app:layout_constraintTop_toTopOf="@id/star1_details"
                         app:srcCompat="@drawable/ic_s_off" />
@@ -94,6 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@id/star1_details"
+                        app:layout_constraintEnd_toStartOf="@id/star4_details"
                         app:layout_constraintStart_toEndOf="@+id/star2_details"
                         app:layout_constraintTop_toTopOf="@+id/star1_details"
                         app:srcCompat="@drawable/ic_s_off" />
@@ -104,6 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+                        app:layout_constraintEnd_toStartOf="@id/star5_details"
                         app:layout_constraintStart_toEndOf="@+id/star3_details"
                         app:layout_constraintTop_toTopOf="@+id/star1_details"
                         app:srcCompat="@drawable/ic_s_off" />
@@ -115,6 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/star4_details"
                         app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+                        app:layout_constraintEnd_toStartOf="@id/review_details"
                         app:layout_constraintStart_toEndOf="@+id/star4_details"
                         app:layout_constraintTop_toTopOf="@+id/star1_details"
                         app:srcCompat="@drawable/ic_s_off" />
@@ -123,6 +128,7 @@
                         android:id="@+id/review_details"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_4"
                         android:fontFamily="@font/open_sans"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/font_14"
@@ -152,10 +158,13 @@
                     android:id="@+id/rcview_horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="1"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/sobre"
                     app:layout_constraintEnd_toEndOf="@id/fotos"
                     app:layout_constraintStart_toStartOf="@id/fotos"
                     app:layout_constraintTop_toBottomOf="@id/fotos" />
-
 
                 <TextView
                     android:id="@+id/sobre"
@@ -164,12 +173,12 @@
                     android:layout_margin="@dimen/margin_20"
                     android:fontFamily="@font/open_sans_semibold"
                     android:text="@string/txt_label_sobre"
-
                     android:textColor="@color/topaz"
                     android:textSize="@dimen/font_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/about_details"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rcview_horizontal" />
-
 
                 <TextView
                     android:id="@+id/about_details"
@@ -185,7 +194,6 @@
                     app:layout_constraintTop_toBottomOf="@id/sobre"
                     tools:text="Se você curte um pão fresquinho, ou uma sobremesa caprichada, você precisa incluir uma visitinha a Padaria Pelicano no seu roteiro por BH. A fila é gigantesca, mas os quitutes estão sem dúvida entre os melhores da cidade. " />
 
-
                 <TextView
                     android:id="@+id/schedules_details"
                     style="@style/txt_location"
@@ -197,7 +205,6 @@
                     android:textColor="@color/black_two"
                     android:textSize="14sp"
                     android:textStyle="normal"
-
                     app:drawableStartCompat="@drawable/ic_time"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/about_details" />
@@ -224,8 +231,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_20"
-                    android:drawablePadding="@dimen/margin_8"
-                    android:fontFamily="@font/open_sans_light"
+                     android:fontFamily="@font/open_sans_light"
                     android:textColor="@color/black_two"
                     android:textSize="14sp"
                     android:textStyle="normal"
