@@ -59,7 +59,11 @@
 
     </style>
 
+//list_item_details
+    <style name="round_square">
+        <item name="cornerSize">10%</item>
 
+    </style>
 
 
 </resources>
