@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">Test Dev Hotmart</string>
-    <string name="hello_blank_fragment">Hello HOME fragment</string>
-    <string name="restaurante">Restaurante</string>
     <string name="ok">OK</string>
 
-
-    //bottom_navig_menu.xml
+    //schedules_dialog.xml
     <string name="home">Home</string>
     <string name="map">Map</string>
     <string name="profile">Profile</string>
@@ -25,7 +22,7 @@
     <string name="txt_label_schedule">Consultar horário de funcionamento</string>
 
 
-    //Utils
+    //Request validations
     <string name="EMPTY_INVALID_REQUEST">Desculpe, não há informação disponível no momento</string>
     <string name="NOT_FOUND_REQUEST">Ocorreu um erro inesperado, tente novamente</string>
     <string name="NOT_CONNECTED_REQUEST">Verifique sua conexão</string>

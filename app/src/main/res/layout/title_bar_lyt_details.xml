@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_title_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/topaz"
+    android:padding="@dimen/margin_16"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/name_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_32"
+        app:layout_constraintBottom_toTopOf="@id/star1_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Padaria Pelicano" />
+
+    <ImageView
+        android:id="@+id/star1_details"
+        style="@style/starStyle_relative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/star2_details"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_details"
+        app:srcCompat="@drawable/ic_s_off" />
+
+    <ImageView
+        android:id="@+id/star2_details"
+        style="@style/starStyle_relative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+        app:layout_constraintEnd_toStartOf="@id/star3_details"
+        app:layout_constraintStart_toEndOf="@+id/star1_details"
+        app:layout_constraintTop_toTopOf="@id/star1_details"
+        app:srcCompat="@drawable/ic_s_off" />
+
+    <ImageView
+        android:id="@+id/star3_details"
+        style="@style/starStyle_relative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/star1_details"
+        app:layout_constraintEnd_toStartOf="@id/star4_details"
+        app:layout_constraintStart_toEndOf="@+id/star2_details"
+        app:layout_constraintTop_toTopOf="@+id/star1_details"
+        app:srcCompat="@drawable/ic_s_off" />
+
+    <ImageView
+        android:id="@+id/star4_details"
+        style="@style/starStyle_relative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+        app:layout_constraintEnd_toStartOf="@id/star5_details"
+        app:layout_constraintStart_toEndOf="@+id/star3_details"
+        app:layout_constraintTop_toTopOf="@+id/star1_details"
+        app:srcCompat="@drawable/ic_s_off" />
+
+    <ImageView
+        android:id="@+id/star5_details"
+        style="@style/starStyle_relative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/star4_details"
+        app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+        app:layout_constraintEnd_toStartOf="@id/review_details"
+        app:layout_constraintStart_toEndOf="@+id/star4_details"
+        app:layout_constraintTop_toTopOf="@+id/star1_details"
+        app:srcCompat="@drawable/ic_s_off" />
+
+    <TextView
+        android:id="@+id/review_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_4"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_14"
+        app:layout_constraintBottom_toBottomOf="@+id/star5_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/star5_details"
+        app:layout_constraintTop_toTopOf="@+id/star5_details"
+        tools:text="2.9" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_rcView_details"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="@dimen/margin_16"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.85"
+
         app:shapeAppearanceOverlay="@style/round_square"
         tools:srcCompat="@drawable/padaria" />
 

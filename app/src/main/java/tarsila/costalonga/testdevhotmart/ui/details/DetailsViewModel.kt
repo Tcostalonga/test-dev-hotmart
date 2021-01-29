@@ -48,6 +48,7 @@ class DetailsViewModel @ViewModelInject constructor(
         } catch (e: JsonParseException) {
             Resource.error(context.getString(R.string.EMPTY_INVALID_REQUEST), null)
         } catch (e: Exception) {
+            e.printStackTrace()
             Resource.error(context.getString(R.string.NOT_FOUND_REQUEST), null)
         }
     }

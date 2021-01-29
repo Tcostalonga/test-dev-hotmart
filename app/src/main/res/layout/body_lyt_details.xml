@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_20">
+
+    <TextView
+        android:id="@+id/fotos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="@string/txt_label_fotos"
+        android:textColor="@color/topaz"
+        android:textSize="@dimen/font_16"
+        app:layout_constraintBottom_toTopOf="@id/rcview_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcview_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/sobre"
+        app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fotos"
+        app:spanCount="1"
+        tools:listitem="@layout/list_item_details" />
+
+    <TextView
+        android:id="@+id/sobre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="@string/txt_label_sobre"
+        android:textColor="@color/topaz"
+        android:textSize="@dimen/font_16"
+        app:layout_constraintBottom_toTopOf="@id/about_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rcview_horizontal" />
+
+    <TextView
+        android:id="@+id/about_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="@color/black_two"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@id/schedules_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sobre"
+        tools:text="Se você curte um pão fresquinho, ou uma sobremesa caprichada, você precisa incluir uma visitinha a Padaria Pelicano no seu roteiro por BH. A fila é gigantesca, mas os quitutes estão sem dúvida entre os melhores da cidade. " />
+
+    <TextView
+        android:id="@+id/schedules_details"
+        style="@style/txt_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_light"
+        android:text="@string/txt_label_schedule"
+        android:textColor="@color/black_two"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:drawableStartCompat="@drawable/ic_time"
+        app:layout_constraintBottom_toTopOf="@id/phone_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/about_details" />
+
+    <TextView
+        android:id="@+id/phone_details"
+        style="@style/txt_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="@color/black_two"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:drawableStartCompat="@drawable/ic_phone"
+        app:layout_constraintBottom_toTopOf="@id/address_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/schedules_details"
+        tools:text="+55 31 98892 5338" />
+
+    <TextView
+        android:id="@+id/address_details"
+        style="@style/txt_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="@color/black_two"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:drawableStartCompat="@drawable/ic_pin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phone_details"
+        tools:text="Rua do ouro, 297 - Serra Belo Horizonte - MG" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

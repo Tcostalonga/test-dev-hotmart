@@ -16,8 +16,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.body_lyt_details.view.*
 import kotlinx.android.synthetic.main.error_layout.view.*
 import kotlinx.android.synthetic.main.schedules_dialog.view.*
+import kotlinx.android.synthetic.main.title_bar_lyt_details.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentDetailsBinding
 import tarsila.costalonga.testdevhotmart.model.Images
@@ -42,8 +44,11 @@ class DetailsFragment : Fragment() {
 
     private lateinit var layoutDialog: View
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setItemsOnUI()
+
 
     }
 
@@ -62,21 +67,9 @@ class DetailsFragment : Fragment() {
         Log.i("HomeFragment", "$arrayOfImgsDetails")
 
         controlItemsViewVisibilityDetail()
-        setItemsOnUI()
         setRecyclerView()
-
-
-/*
-
-        binding.shareDetails.setOnClickListener {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.share_text),
-                Toast.LENGTH_SHORT
-            ).show()
-        }*/
-
         showScheduleDialog()
+
 
         binding.toolbar.setNavigationOnClickListener { view ->
             findNavController().popBackStack()
@@ -105,7 +98,7 @@ class DetailsFragment : Fragment() {
 
     private fun showScheduleDialog() {
 
-        binding.schedulesDetails.setOnClickListener {
+        binding.bodyLytDetails.schedules_details.setOnClickListener {
 
             val layoutDialog =
                 LayoutInflater.from(requireContext()).inflate(R.layout.schedules_dialog, null)
@@ -148,12 +141,12 @@ class DetailsFragment : Fragment() {
 
     private fun setItemsOnUI() {
 
-        viewModel.detailLocation.observe(viewLifecycleOwner, Observer {
-            binding.nameDetails.text = it.name
-            binding.reviewDetails.text = it.review.toString()
-            binding.aboutDetails.text = it.about
-            binding.phoneDetails.text = it.phone
-            binding.addressDetails.text = it.address
+        viewModel.detailLocation.observe(this, Observer {
+            binding.titleBarLytDetails.name_details.text = it.name
+            binding.titleBarLytDetails.review_details.text = it.review.toString()
+            binding.bodyLytDetails.about_details.text = it.about
+            binding.bodyLytDetails.phone_details.text = it.phone
+            binding.bodyLytDetails.address_details.text = it.address
             setImage()
             setStarsColors(it.review)
         })
@@ -173,29 +166,29 @@ class DetailsFragment : Fragment() {
         when (review) {
 
             in 0.1f..1.9f -> {
-                binding.star1Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
             }
             in 2.0f..2.9f -> {
-                binding.star1Details.setImageResource(R.drawable.ic_s_on)
-                binding.star2Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star2_details.setImageResource(R.drawable.ic_s_on)
             }
             in 3.0f..3.9f -> {
-                binding.star1Details.setImageResource(R.drawable.ic_s_on)
-                binding.star2Details.setImageResource(R.drawable.ic_s_on)
-                binding.star3Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star2_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star3_details.setImageResource(R.drawable.ic_s_on)
             }
             in 4.0f..4.9f -> {
-                binding.star1Details.setImageResource(R.drawable.ic_s_on)
-                binding.star2Details.setImageResource(R.drawable.ic_s_on)
-                binding.star3Details.setImageResource(R.drawable.ic_s_on)
-                binding.star4Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star2_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star3_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star4_details.setImageResource(R.drawable.ic_s_on)
             }
             5.0f -> {
-                binding.star1Details.setImageResource(R.drawable.ic_s_on)
-                binding.star2Details.setImageResource(R.drawable.ic_s_on)
-                binding.star3Details.setImageResource(R.drawable.ic_s_on)
-                binding.star4Details.setImageResource(R.drawable.ic_s_on)
-                binding.star5Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star2_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star3_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star4_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star5_details.setImageResource(R.drawable.ic_s_on)
             }
         }
     }
@@ -242,9 +235,9 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        binding.rcviewHorizontal.layoutManager =
+        binding.bodyLytDetails.rcview_horizontal.layoutManager =
             GridLayoutManager(requireContext(), 1, GridLayoutManager.HORIZONTAL, false)
-        binding.rcviewHorizontal.adapter = adapter
+        binding.bodyLytDetails.rcview_horizontal.adapter = adapter
 
 
     }
