@@ -1,12 +1,15 @@
 package tarsila.costalonga.testdevhotmart.ui.home
 
+import android.content.Context
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.JsonParseException
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
+import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.model.Images
 import tarsila.costalonga.testdevhotmart.model.ListLocations
 import tarsila.costalonga.testdevhotmart.network.ImagesAPI
@@ -14,7 +17,9 @@ import tarsila.costalonga.testdevhotmart.network.LocationAPI
 import tarsila.costalonga.testdevhotmart.utils.*
 import java.net.UnknownHostException
 
+
 class HomeViewModel @ViewModelInject constructor(
+    @ApplicationContext val context: Context,
     private val locationAPI: LocationAPI,
     private val imagesAPI: ImagesAPI
 ) :
@@ -45,16 +50,16 @@ class HomeViewModel @ViewModelInject constructor(
                 retornoLocations.body()?.let {
                     _locations.value = retornoLocations.body()
                     return@let Resource.success(retornoLocations.body())
-                } ?: Resource.error(EMPTY_INVALID_REQUEST, null)
+                } ?: Resource.error(context.getString(R.string.EMPTY_INVALID_REQUEST), null)
             } else {
-                Resource.error(NOT_FOUND_REQUEST, null)
+                Resource.error(context.getString(R.string.NOT_FOUND_REQUEST), null)
             }
         } catch (e: UnknownHostException) {
-            Resource.error(NOT_CONNECTED_REQUEST, null)
+            Resource.error(context.getString(R.string.NOT_CONNECTED_REQUEST), null)
         } catch (e: JsonParseException) {
-            Resource.error(EMPTY_INVALID_REQUEST, null)
+            Resource.error(context.getString(R.string.EMPTY_INVALID_REQUEST), null)
         } catch (e: Exception) {
-            Resource.error(NOT_FOUND_REQUEST, null)
+            Resource.error(context.getString(R.string.NOT_FOUND_REQUEST), null)
         }
     }
 

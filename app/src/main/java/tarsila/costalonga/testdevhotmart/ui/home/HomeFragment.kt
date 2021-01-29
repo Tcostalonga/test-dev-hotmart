@@ -87,8 +87,10 @@ class HomeFragment : Fragment() {
                             getString(R.string.EMPTY_INVALID_REQUEST) -> binding.errorLytHome.img_error.setImageResource(
                                 R.drawable.ic_lupa_quebrada
                             )
-                            getString(R.string.NOT_FOUND_REQUEST)  -> binding.errorLytHome.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
-                            getString(R.string.NOT_CONNECTED_REQUEST)  -> binding.errorLytHome.img_error.setImageResource(
+                            getString(R.string.NOT_FOUND_REQUEST) -> binding.errorLytHome.img_error.setImageResource(
+                                R.drawable.ic_lupa_quebrada
+                            )
+                            getString(R.string.NOT_CONNECTED_REQUEST) -> binding.errorLytHome.img_error.setImageResource(
                                 R.drawable.ic_wifi_off
                             )
                         }
