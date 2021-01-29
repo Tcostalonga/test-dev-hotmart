@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:fitsSystemWindows="true"
+        android:theme="@style/TestDevHotmart">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/colaps_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleEnabled="false"
+            app:toolbarId="@id/toolbar">
+
+            <ImageView
+                android:id="@+id/detail_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                app:srcCompat="@drawable/padaria" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:layout_collapseMode="pin"
+
+                app:menu="@menu/toolbar_menu"
+                app:navigationIcon="@drawable/ic_arrow_back" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:visibility="gone"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cvLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/relative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/topaz"
+                android:padding="@dimen/margin_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/name_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_16"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_32"
+                    app:layout_constraintBottom_toTopOf="@id/star1_details"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Padaria Pelicano" />
+
+                <ImageView
+                    android:id="@+id/star1_details"
+                    style="@style/starStyle_relative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/star2_details"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_details"
+                    app:srcCompat="@drawable/ic_s_off" />
+
+                <ImageView
+                    android:id="@+id/star2_details"
+                    style="@style/starStyle_relative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+                    app:layout_constraintEnd_toStartOf="@id/star3_details"
+                    app:layout_constraintStart_toEndOf="@+id/star1_details"
+                    app:layout_constraintTop_toTopOf="@id/star1_details"
+                    app:srcCompat="@drawable/ic_s_off" />
+
+                <ImageView
+                    android:id="@+id/star3_details"
+                    style="@style/starStyle_relative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/star1_details"
+                    app:layout_constraintEnd_toStartOf="@id/star4_details"
+                    app:layout_constraintStart_toEndOf="@+id/star2_details"
+                    app:layout_constraintTop_toTopOf="@+id/star1_details"
+                    app:srcCompat="@drawable/ic_s_off" />
+
+                <ImageView
+                    android:id="@+id/star4_details"
+                    style="@style/starStyle_relative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+                    app:layout_constraintEnd_toStartOf="@id/star5_details"
+                    app:layout_constraintStart_toEndOf="@+id/star3_details"
+                    app:layout_constraintTop_toTopOf="@+id/star1_details"
+                    app:srcCompat="@drawable/ic_s_off" />
+
+                <ImageView
+                    android:id="@+id/star5_details"
+                    style="@style/starStyle_relative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/star4_details"
+                    app:layout_constraintBottom_toBottomOf="@+id/star1_details"
+                    app:layout_constraintEnd_toStartOf="@id/review_details"
+                    app:layout_constraintStart_toEndOf="@+id/star4_details"
+                    app:layout_constraintTop_toTopOf="@+id/star1_details"
+                    app:srcCompat="@drawable/ic_s_off" />
+
+                <TextView
+                    android:id="@+id/review_details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_4"
+                    android:fontFamily="@font/open_sans"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_14"
+                    app:layout_constraintBottom_toBottomOf="@+id/star5_details"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/star5_details"
+                    app:layout_constraintTop_toTopOf="@+id/star5_details"
+                    tools:text="2.9" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/fotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_20"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/txt_label_fotos"
+                android:textColor="@color/topaz"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintBottom_toTopOf="@id/rcview_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/relative" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcview_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/sobre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.08"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fotos"
+                app:spanCount="1" />
+
+            <TextView
+                android:id="@+id/sobre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_20"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/txt_label_sobre"
+                android:textColor="@color/topaz"
+                android:textSize="@dimen/font_16"
+                app:layout_constraintBottom_toTopOf="@id/about_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rcview_horizontal" />
+
+            <TextView
+                android:id="@+id/about_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_20"
+                android:fontFamily="@font/open_sans_light"
+                android:textColor="@color/black_two"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@id/schedules_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sobre"
+                tools:text="Se você curte um pão fresquinho, ou uma sobremesa caprichada, você precisa incluir uma visitinha a Padaria Pelicano no seu roteiro por BH. A fila é gigantesca, mas os quitutes estão sem dúvida entre os melhores da cidade. " />
+
+            <TextView
+                android:id="@+id/schedules_details"
+                style="@style/txt_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:text="@string/txt_label_schedule"
+                android:textColor="@color/black_two"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:drawableStartCompat="@drawable/ic_time"
+                app:layout_constraintBottom_toTopOf="@id/phone_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/about_details" />
+
+            <TextView
+                android:id="@+id/phone_details"
+                style="@style/txt_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:textColor="@color/black_two"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:drawableStartCompat="@drawable/ic_phone"
+                app:layout_constraintBottom_toTopOf="@id/address_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/schedules_details"
+                tools:text="+55 31 98892 5338" />
+
+
+            <TextView
+                android:id="@+id/address_details"
+                style="@style/txt_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:textColor="@color/black_two"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:drawableStartCompat="@drawable/ic_pin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phone_details"
+                tools:text="Rua do ouro, 297 - Serra Belo Horizonte - MG" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

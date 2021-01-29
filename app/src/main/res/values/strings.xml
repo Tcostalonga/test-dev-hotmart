@@ -29,4 +29,5 @@
     <string name="EMPTY_INVALID_REQUEST">Desculpe, não há informação disponível no momento</string>
     <string name="NOT_FOUND_REQUEST">Ocorreu um erro inesperado, tente novamente</string>
     <string name="NOT_CONNECTED_REQUEST">Verifique sua conexão</string>
+    <string name="share">Compartilhar</string>
 </resources>

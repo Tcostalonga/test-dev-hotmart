@@ -18,7 +18,6 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.error_layout.view.*
 import kotlinx.android.synthetic.main.schedules_dialog.view.*
-import tarsila.costalonga.testdevhotmart.MainActivity
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentDetailsBinding
 import tarsila.costalonga.testdevhotmart.model.Images
@@ -46,8 +45,6 @@ class DetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        (requireActivity() as MainActivity).supportActionBar?.hide()
-
     }
 
     override fun onCreateView(
@@ -55,8 +52,6 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
-        // binding.lifecycleOwner = viewLifecycleOwner
-        //  binding.view = viewModel
 
         val args = DetailsFragmentArgs.fromBundle(requireArguments())
         idDetail = args.id
@@ -69,9 +64,9 @@ class DetailsFragment : Fragment() {
         controlItemsViewVisibilityDetail()
         setItemsOnUI()
         setRecyclerView()
-        binding.backArrowDetails.setOnClickListener {
-            findNavController().popBackStack()
-        }
+
+
+/*
 
         binding.shareDetails.setOnClickListener {
             Toast.makeText(
@@ -79,11 +74,34 @@ class DetailsFragment : Fragment() {
                 getString(R.string.share_text),
                 Toast.LENGTH_SHORT
             ).show()
-        }
+        }*/
 
         showScheduleDialog()
+
+        binding.toolbar.setNavigationOnClickListener { view ->
+            findNavController().popBackStack()
+        }
+
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.share -> {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.share_text),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+                else -> false
+            }
+        }
+        setHasOptionsMenu(true)
+
         return binding.root
+
+
     }
+
 
     private fun showScheduleDialog() {
 
@@ -147,7 +165,7 @@ class DetailsFragment : Fragment() {
             Picasso.get()
                 .load(imgUri)
                 .error(getRandomColor())
-                .into(binding.imgDetails)
+                .into(binding.detailImage)
         }
     }
 
@@ -209,7 +227,9 @@ class DetailsFragment : Fragment() {
                         getString(R.string.EMPTY_INVALID_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(
                             R.drawable.ic_lupa_quebrada
                         )
-                        getString(R.string.NOT_FOUND_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(R.drawable.ic_lupa_quebrada)
+                        getString(R.string.NOT_FOUND_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(
+                            R.drawable.ic_lupa_quebrada
+                        )
                         getString(R.string.NOT_CONNECTED_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(
                             R.drawable.ic_wifi_off
                         )
