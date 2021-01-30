@@ -32,6 +32,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("HomeFragment", "Chamou on create")
 
         viewModel.locations.observe(this, Observer {
             adapter.data = it.listLocations

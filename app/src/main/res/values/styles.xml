@@ -5,6 +5,8 @@
     <style name="myCardStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/margin_16</item>
         <item name="cardElevation">@dimen/margin_4</item>
+        <item name="android:layout_margin">@dimen/margin_8</item>
+
     </style>
 
 
@@ -27,7 +29,10 @@
 
     //fragment_details.xml
     <style name="txt_location" >
-        <item name="android:layout_marginBottom">@dimen/margin_20</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:padding">@dimen/margin_2</item>
+        <item name="android:textColor">@color/black_two</item>
+        <item name="android:fontFamily">@font/open_sans_light</item>
         <item name="android:drawablePadding">@dimen/margin_8</item>
 
     </style>

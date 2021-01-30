@@ -20,7 +20,6 @@ class DetailsViewModel @ViewModelInject constructor(
     private val _detailLocation = MutableLiveData<DetailLocation>()
     val detailLocation: LiveData<DetailLocation> = _detailLocation
 
-
     private val _statusRequestDetail = MutableLiveData<Status>()
     val statusRequestDetail: LiveData<Status>
         get() = _statusRequestDetail

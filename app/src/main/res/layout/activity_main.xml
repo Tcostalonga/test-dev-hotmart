@@ -13,19 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/view1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/view1"
         app:navGraph="@navigation/nav" />
-
 
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="0.9dp"
         android:background="@color/topaz"
-
         app:layout_constraintBottom_toTopOf="@id/nav_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

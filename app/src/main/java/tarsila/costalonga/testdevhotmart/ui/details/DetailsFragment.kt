@@ -41,14 +41,23 @@ class DetailsFragment : Fragment() {
 
     private var adapter: ImagesAdapter = ImagesAdapter()
 
-
     private lateinit var layoutDialog: View
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setItemsOnUI()
 
+        setItemsOnUI()
+        controlItemsViewVisibilityDetail()
+        Log.i("DetailsFragment", "Chamou on create")
+
+        val args = DetailsFragmentArgs.fromBundle(requireArguments())
+        idDetail = args.id
+        arrayOfImgsDetails = args.imgDetails
+        oneImg = args.oneImg
+        adapter.imgsArray = arrayOfImgsDetails
+
+        viewModel.requestDetails(idDetail)
 
     }
 
@@ -58,19 +67,20 @@ class DetailsFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
 
-        val args = DetailsFragmentArgs.fromBundle(requireArguments())
-        idDetail = args.id
-        arrayOfImgsDetails = args.imgDetails
-        oneImg = args.oneImg
-        adapter.imgsArray = arrayOfImgsDetails
-
-        Log.i("HomeFragment", "$arrayOfImgsDetails")
-
-        controlItemsViewVisibilityDetail()
         setRecyclerView()
         showScheduleDialog()
+        toolbarButtonsSetup()
 
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        layoutDialog =
+            LayoutInflater.from(requireContext()).inflate(R.layout.schedules_dialog, null)
+    }
+
+    private fun toolbarButtonsSetup() {
         binding.toolbar.setNavigationOnClickListener { view ->
             findNavController().popBackStack()
         }
@@ -88,13 +98,8 @@ class DetailsFragment : Fragment() {
                 else -> false
             }
         }
-        setHasOptionsMenu(true)
-
-        return binding.root
-
 
     }
-
 
     private fun showScheduleDialog() {
 
@@ -132,20 +137,13 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.requestDetails(idDetail)
-        layoutDialog =
-            LayoutInflater.from(requireContext()).inflate(R.layout.schedules_dialog, null)
-    }
-
     private fun setItemsOnUI() {
 
         viewModel.detailLocation.observe(this, Observer {
+
             binding.titleBarLytDetails.name_details.text = it.name
             binding.titleBarLytDetails.review_details.text = it.review.toString()
             binding.bodyLytDetails.about_details.text = it.about
-            binding.bodyLytDetails.phone_details.text = it.phone
             binding.bodyLytDetails.address_details.text = it.address
             setImage()
             setStarsColors(it.review)
@@ -196,7 +194,7 @@ class DetailsFragment : Fragment() {
 
     private fun controlItemsViewVisibilityDetail() {
 
-        viewModel.statusRequestDetail.observe(viewLifecycleOwner, Observer {
+        viewModel.statusRequestDetail.observe(this, Observer {
             when (it) {
                 Status.SUCCESS -> {
                     binding.nestedDetails.visibility = View.VISIBLE
