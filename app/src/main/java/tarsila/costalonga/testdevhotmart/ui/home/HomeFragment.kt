@@ -5,14 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.error_layout.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentHomeBinding
 import tarsila.costalonga.testdevhotmart.model.Images
@@ -58,7 +56,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         Log.i("HomeFragment", "Chamou on create view ")
 
         setRecyclerView()
@@ -73,22 +71,22 @@ class HomeFragment : Fragment() {
         viewModel.statusRequest.observe(viewLifecycleOwner, Observer {
             when (it) {
                 Status.ERROR -> {
-                    binding.errorLytHome.pg_bar_home.visibility = View.GONE
+                    binding.errorLytHome.pgBar.visibility = View.GONE
                     binding.recView.visibility = View.GONE
-                    binding.errorLytHome.img_error.visibility = View.VISIBLE
-                    binding.errorLytHome.txt_error.visibility = View.VISIBLE
+                    binding.errorLytHome.imgError.visibility = View.VISIBLE
+                    binding.errorLytHome.txtError.visibility = View.VISIBLE
 
                     viewModel.msgHome?.let { msg ->
-                        binding.errorLytHome.txt_error.text = msg
+                        binding.errorLytHome.txtError.text = msg
 
                         when (viewModel.msgHome) {
-                            getString(R.string.EMPTY_INVALID_REQUEST) -> binding.errorLytHome.img_error.setImageResource(
+                            getString(R.string.EMPTY_INVALID_REQUEST) -> binding.errorLytHome.imgError.setImageResource(
                                 R.drawable.ic_lupa_quebrada
                             )
-                            getString(R.string.NOT_FOUND_REQUEST) -> binding.errorLytHome.img_error.setImageResource(
+                            getString(R.string.NOT_FOUND_REQUEST) -> binding.errorLytHome.imgError.setImageResource(
                                 R.drawable.ic_lupa_quebrada
                             )
-                            getString(R.string.NOT_CONNECTED_REQUEST) -> binding.errorLytHome.img_error.setImageResource(
+                            getString(R.string.NOT_CONNECTED_REQUEST) -> binding.errorLytHome.imgError.setImageResource(
                                 R.drawable.ic_wifi_off
                             )
                         }
@@ -97,11 +95,11 @@ class HomeFragment : Fragment() {
                 Status.SUCCESS -> {
                     binding.recView.visibility = View.VISIBLE
 
-                    binding.errorLytHome.pg_bar_home.visibility = View.GONE
-                    binding.errorLytHome.img_error.visibility = View.GONE
-                    binding.errorLytHome.txt_error.visibility = View.GONE
+                    binding.errorLytHome.pgBar.visibility = View.GONE
+                    binding.errorLytHome.imgError.visibility = View.GONE
+                    binding.errorLytHome.txtError.visibility = View.GONE
                 }
-                else -> binding.errorLytHome.pg_bar_home.visibility = View.VISIBLE
+                else -> binding.errorLytHome.pgBar.visibility = View.VISIBLE
             }
         })
     }

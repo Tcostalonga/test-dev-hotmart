@@ -28,7 +28,7 @@
         tools:visibility="visible" />
 
     <ProgressBar
-        android:id="@+id/pg_bar_home"
+        android:id="@+id/pg_bar"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

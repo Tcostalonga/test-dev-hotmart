@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,10 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.body_lyt_details.view.*
-import kotlinx.android.synthetic.main.error_layout.view.*
 import kotlinx.android.synthetic.main.schedules_dialog.view.*
-import kotlinx.android.synthetic.main.title_bar_lyt_details.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.databinding.FragmentDetailsBinding
 import tarsila.costalonga.testdevhotmart.model.Images
@@ -65,7 +61,7 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
+        binding = FragmentDetailsBinding.inflate(inflater, container, false)
 
         setRecyclerView()
         showScheduleDialog()
@@ -103,7 +99,7 @@ class DetailsFragment : Fragment() {
 
     private fun showScheduleDialog() {
 
-        binding.bodyLytDetails.schedules_details.setOnClickListener {
+        binding.bodyLytDetails.schedulesDetails.setOnClickListener {
 
             val layoutDialog =
                 LayoutInflater.from(requireContext()).inflate(R.layout.schedules_dialog, null)
@@ -141,10 +137,11 @@ class DetailsFragment : Fragment() {
 
         viewModel.detailLocation.observe(this, Observer {
 
-            binding.titleBarLytDetails.name_details.text = it.name
-            binding.titleBarLytDetails.review_details.text = it.review.toString()
-            binding.bodyLytDetails.about_details.text = it.about
-            binding.bodyLytDetails.address_details.text = it.address
+            binding.titleBarLytDetails.nameDetails.text = it.name
+            binding.titleBarLytDetails.reviewDetails.text = it.review.toString()
+            binding.bodyLytDetails.phoneDetails.text = it.phone
+            binding.bodyLytDetails.aboutDetails.text = it.about
+            binding.bodyLytDetails.addressDetails.text = it.address
             setImage()
             setStarsColors(it.review)
         })
@@ -164,29 +161,29 @@ class DetailsFragment : Fragment() {
         when (review) {
 
             in 0.1f..1.9f -> {
-                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1Details.setImageResource(R.drawable.ic_s_on)
             }
             in 2.0f..2.9f -> {
-                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star2_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star2Details.setImageResource(R.drawable.ic_s_on)
             }
             in 3.0f..3.9f -> {
-                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star2_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star3_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star2Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star3Details.setImageResource(R.drawable.ic_s_on)
             }
             in 4.0f..4.9f -> {
-                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star2_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star3_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star4_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star2Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star3Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star4Details.setImageResource(R.drawable.ic_s_on)
             }
             5.0f -> {
-                binding.titleBarLytDetails.star1_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star2_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star3_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star4_details.setImageResource(R.drawable.ic_s_on)
-                binding.titleBarLytDetails.star5_details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star1Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star2Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star3Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star4Details.setImageResource(R.drawable.ic_s_on)
+                binding.titleBarLytDetails.star5Details.setImageResource(R.drawable.ic_s_on)
             }
         }
     }
@@ -198,44 +195,44 @@ class DetailsFragment : Fragment() {
             when (it) {
                 Status.SUCCESS -> {
                     binding.nestedDetails.visibility = View.VISIBLE
-                    binding.errorLytDetails.pg_bar_home.visibility = View.GONE
-                    binding.errorLytDetails.img_error.visibility = View.GONE
-                    binding.errorLytDetails.txt_error.visibility = View.GONE
+                    binding.errorLytDetails.pgBar.visibility = View.GONE
+                    binding.errorLytDetails.imgError.visibility = View.GONE
+                    binding.errorLytDetails.txtError.visibility = View.GONE
 
                 }
                 Status.ERROR -> {
 
-                    binding.errorLytDetails.pg_bar_home.visibility = View.GONE
+                    binding.errorLytDetails.pgBar.visibility = View.GONE
                     binding.nestedDetails.visibility = View.GONE
-                    binding.errorLytDetails.txt_error.visibility = View.VISIBLE
+                    binding.errorLytDetails.txtError.visibility = View.VISIBLE
 
-                    binding.errorLytDetails.img_error.visibility = View.VISIBLE
+                    binding.errorLytDetails.txtError.visibility = View.VISIBLE
 
                     viewModel.msgDetail?.let { msg ->
-                        binding.errorLytDetails.txt_error.text = msg
-                    }
-                    when (viewModel.msgDetail) {
-                        getString(R.string.EMPTY_INVALID_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(
-                            R.drawable.ic_lupa_quebrada
-                        )
-                        getString(R.string.NOT_FOUND_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(
-                            R.drawable.ic_lupa_quebrada
-                        )
-                        getString(R.string.NOT_CONNECTED_REQUEST) -> binding.errorLytDetails.img_error.setImageResource(
-                            R.drawable.ic_wifi_off
-                        )
-                    }
+                        binding.errorLytDetails.txtError.text = msg
 
+                        when (viewModel.msgDetail) {
+                            getString(R.string.EMPTY_INVALID_REQUEST) -> binding.errorLytDetails.imgError.setImageResource(
+                                R.drawable.ic_lupa_quebrada
+                            )
+                            getString(R.string.NOT_FOUND_REQUEST) -> binding.errorLytDetails.imgError.setImageResource(
+                                R.drawable.ic_lupa_quebrada
+                            )
+                            getString(R.string.NOT_CONNECTED_REQUEST) -> binding.errorLytDetails.imgError.setImageResource(
+                                R.drawable.ic_wifi_off
+                            )
+                        }
+                    }
                 }
-                else -> binding.errorLytDetails.pg_bar_home.visibility = View.VISIBLE
+                else -> binding.errorLytDetails.pgBar.visibility = View.VISIBLE
             }
         })
     }
 
     private fun setRecyclerView() {
-        binding.bodyLytDetails.rcview_horizontal.layoutManager =
+        binding.bodyLytDetails.rcviewHorizontal.layoutManager =
             GridLayoutManager(requireContext(), 1, GridLayoutManager.HORIZONTAL, false)
-        binding.bodyLytDetails.rcview_horizontal.adapter = adapter
+        binding.bodyLytDetails.rcviewHorizontal.adapter = adapter
 
 
     }
