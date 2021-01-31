@@ -30,10 +30,19 @@ Tela de Detalhes:
 * [MVVM](https://developer.android.com/jetpack/guide) - Padrão de projeto recomendado pelo Google para desenvolvimento mobile
 * [Navigation](https://developer.android.com/guide/navigation/navigation-getting-started) - Framework para navegar entre destinos em um aplicativo
 * [OkHttp](https://github.com/square/okhttp) - Cliente HTTP & HTTP/2 para aplicativos Android e Java
-* [Picasso](https://square.github.io/picasso/) - Bibliotecas de carregamento de imagens
 * [Picasso](https://square.github.io/picasso/) - Uma poderosa biblioteca de download e cache de imagens
 * [Retrofit](https://square.github.io/retrofit/) - HTTP client para Android e Java
 * [View Binding](https://developer.android.com/topic/libraries/view-binding) - Biblioteca para vinculação de componentes de UI a fontes de dados
 
 
  ### Imagens
+ 
+  <img src="https://github.com/Tcostalonga/test-dev-hotmart/blob/master/screenshots/Screenshot_1612113229.png" alt="app1" width="220" height= "409"/>       <img src="https://github.com/Tcostalonga/test-dev-hotmart/blob/master/screenshots/Screenshot_1612123556.png" alt="app1" width="220" height= "409"/>   
+
+
+<img src="https://github.com/Tcostalonga/test-dev-hotmart/blob/master/screenshots/Screenshot_1612123592.png" alt="app1" width="220" height= "409"/>        <img src="https://github.com/Tcostalonga/test-dev-hotmart/blob/master/screenshots/Screenshot_1612123969.png" alt="app1" width="220" height= "409"/>   
+
+ 
+  <img src="https://github.com/Tcostalonga/test-dev-hotmart/blob/master/screenshots/Screenshot_1612113369.png" alt="app1" width="154" height= "286"/>       <img src="https://github.com/Tcostalonga/test-dev-hotmart/blob/master/screenshots/Screenshot_1612123571.png" alt="app1" width="154" height= "286"/>       <img src="https://github.com/Tcostalonga/test-dev-hotmart/blob/master/screenshots/Screenshot_1612123575.png" alt="app1" width="154" height= "286"/>
+
+
