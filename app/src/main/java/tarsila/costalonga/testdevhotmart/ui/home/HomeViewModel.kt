@@ -17,7 +17,6 @@ import tarsila.costalonga.testdevhotmart.network.LocationAPI
 import tarsila.costalonga.testdevhotmart.utils.*
 import java.net.UnknownHostException
 
-
 class HomeViewModel @ViewModelInject constructor(
     @ApplicationContext val context: Context,
     private val locationAPI: LocationAPI,
@@ -32,9 +31,8 @@ class HomeViewModel @ViewModelInject constructor(
     val statusRequest: LiveData<Status>
         get() = _statusRequest
 
-    var _images = MutableLiveData<Images>()
+    private var _images = MutableLiveData<Images>()
     val images: LiveData<Images> = _images
-
 
     var msgHome: String? = null
 
@@ -63,14 +61,13 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-    fun requestLocations() {
+    private fun requestLocations() {
         viewModelScope.launch {
             val makeRequestLocationsApi = makeRequestLocationsAPI()
             msgHome = makeRequestLocationsApi.message
             _statusRequest.value = makeRequestLocationsApi.status
         }
     }
-
 
     private suspend fun makeRequestImagesAPI(qntImg: Int) {
 
@@ -85,14 +82,9 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-
     fun requestImages(qntImg: Int) {
         viewModelScope.launch {
-            val makeRequestImagesAPI = makeRequestImagesAPI(qntImg)
-
-
+            makeRequestImagesAPI(qntImg)
         }
     }
-
-
 }

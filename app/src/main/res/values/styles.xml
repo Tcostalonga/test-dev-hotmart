@@ -1,73 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    //list_item.xml
+    //list_item_home.xml
+
     <style name="myCardStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/margin_16</item>
         <item name="cardElevation">@dimen/margin_4</item>
         <item name="android:layout_margin">@dimen/margin_8</item>
-
     </style>
 
-
-    //fragment_details.xml
-    <style name="starStyle_relative" >
-         <item name="android:scaleX">1.5</item>
-        <item name="android:scaleY">1.5</item>
-        <item name="android:layout_marginEnd">@dimen/margin_4</item>
-        <item name="android:padding">@dimen/margin_4</item>
-     </style>
-
-    //list_item.xml
-    <style name="starStyle_constraint" >
-        <item name="android:layout_marginTop">@dimen/margin_4</item>
+    <style name="starStyle_home">
         <item name="android:layout_marginBottom">@dimen/margin_4</item>
-         <item name="android:padding">1dp</item>
+        <item name="android:padding">1dp</item>
         <item name="android:layout_below">@id/type_home</item>
-
     </style>
 
-    //fragment_details.xml
-    <style name="txt_location" >
+
+    //d_body.xml
+
+    <style name="txt_d_body">
         <item name="android:textSize">@dimen/font_14</item>
         <item name="android:padding">@dimen/margin_2</item>
         <item name="android:textColor">@color/black_two</item>
         <item name="android:fontFamily">@font/open_sans_light</item>
         <item name="android:drawablePadding">@dimen/margin_8</item>
-
     </style>
 
-    //schedules_dialogs.xml
-    <style name="rows_style" >
+    <style name="titles_d_body">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textColor">@color/topaz</item>
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:layout_marginBottom">@dimen/margin_16</item>
+    </style>
+
+
+    //d_titlebar.xml
+
+    <style name="starStyle_d_body">
+        <item name="android:scaleX">1.5</item>
+        <item name="android:scaleY">1.5</item>
+        <item name="android:layout_marginEnd">@dimen/margin_4</item>
+        <item name="android:padding">@dimen/margin_4</item>
+    </style>
+
+
+    //d_schedule.xml
+
+    <style name="rows_style">
         <item name="android:gravity">center</item>
-<item name="android:layout_marginTop">@dimen/margin_4</item>
-
+        <item name="android:layout_marginTop">@dimen/margin_4</item>
     </style>
 
-
-    //schedules_dialogs.xml
-    <style name="time_style" >
+    <style name="time_style">
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/black_two</item>
         <item name="android:layout_margin">@dimen/margin_4</item>
         <item name="android:paddingStart">@dimen/margin_4</item>
-
     </style>
-    //schedules_dialogs.xml
-    <style name="days_style" >
+
+    <style name="days_style">
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:textColor">@color/black_two</item>
         <item name="android:layout_margin">@dimen/margin_4</item>
         <item name="android:paddingStart">@dimen/margin_4</item>
-
     </style>
 
-//list_item_details
+
+    //list_item_details.xml
+
     <style name="round_square">
         <item name="cornerSize">10%</item>
-
     </style>
-
 
 </resources>

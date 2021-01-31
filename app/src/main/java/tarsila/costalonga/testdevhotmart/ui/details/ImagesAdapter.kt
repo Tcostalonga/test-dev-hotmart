@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_details.view.*
 import tarsila.costalonga.testdevhotmart.R
 import tarsila.costalonga.testdevhotmart.model.Images
+import tarsila.costalonga.testdevhotmart.utils.getRandomColor
 
 class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.DetailsImagesViewHolder>() {
 
@@ -25,6 +26,8 @@ class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.DetailsImagesViewHolder
             val imgUri = item.toUri().buildUpon().scheme("https").build()
             Picasso.get()
                 .load(imgUri)
+                .placeholder(getRandomColor())
+                .error(getRandomColor())
                 .into(itemView.img_rcView_details)
         }
     }

@@ -43,7 +43,6 @@ object ModuleAPI {
             .create(ImagesAPI::class.java)
     }
 
-
     fun okHttpClient(): OkHttpClient {
 
         val okhttpInterceptor = HttpLoggingInterceptor()
@@ -55,5 +54,4 @@ object ModuleAPI {
 
         return okHttpClient.build()
     }
-
 }

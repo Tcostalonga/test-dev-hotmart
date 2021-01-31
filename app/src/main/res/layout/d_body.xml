@@ -8,13 +8,10 @@
 
     <TextView
         android:id="@+id/fotos"
+        style="@style/titles_d_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_16"
-        android:fontFamily="@font/open_sans_semibold"
         android:text="@string/txt_label_fotos"
-        android:textColor="@color/topaz"
-        android:textSize="@dimen/font_16"
         app:layout_constraintBottom_toTopOf="@id/rcview_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,13 +33,10 @@
 
     <TextView
         android:id="@+id/sobre"
+        style="@style/titles_d_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_16"
-        android:fontFamily="@font/open_sans_semibold"
         android:text="@string/txt_label_sobre"
-        android:textColor="@color/topaz"
-        android:textSize="@dimen/font_16"
         app:layout_constraintBottom_toTopOf="@id/about_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +58,7 @@
 
     <TextView
         android:id="@+id/schedules_details"
-        style="@style/txt_location"
+        style="@style/txt_d_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_16"
@@ -77,7 +71,7 @@
 
     <TextView
         android:id="@+id/phone_details"
-        style="@style/txt_location"
+        style="@style/txt_d_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_16"
@@ -90,7 +84,7 @@
 
     <TextView
         android:id="@+id/address_details"
-        style="@style/txt_location"
+        style="@style/txt_d_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:drawableStartCompat="@drawable/ic_pin"

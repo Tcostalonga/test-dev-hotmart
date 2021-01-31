@@ -1,7 +1,6 @@
 package tarsila.costalonga.testdevhotmart.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,13 +23,11 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private var adapter: LocationsAdapter = LocationsAdapter()
 
-
     var qntItensLocations: Int = 0
     var arrayOfImgs = Images()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("HomeFragment", "Chamou on create")
 
         viewModel.locations.observe(this, Observer {
             adapter.data = it.listLocations
@@ -38,9 +35,7 @@ class HomeFragment : Fragment() {
             //Pegar num de itens da lista de locais e pesquisar a msm qnt em imagens
             qntItensLocations = it.listLocations.size
 
-            if (qntItensLocations > 3) {
-                viewModel.requestImages(qntItensLocations)
-            }
+            viewModel.requestImages(qntItensLocations)
         })
 
         viewModel.images.observe(this, Observer {
@@ -57,16 +52,14 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        Log.i("HomeFragment", "Chamou on create view ")
 
         setRecyclerView()
-        controlItemsViewVisibility()
+        controlItemsViewVisibilityHome()
 
         return binding.root
     }
 
-
-    private fun controlItemsViewVisibility() {
+    private fun controlItemsViewVisibilityHome() {
 
         viewModel.statusRequest.observe(viewLifecycleOwner, Observer {
             when (it) {
@@ -119,6 +112,4 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
-
 }

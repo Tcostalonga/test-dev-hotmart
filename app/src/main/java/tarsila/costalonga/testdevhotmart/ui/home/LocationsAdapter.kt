@@ -19,7 +19,6 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
             notifyDataSetChanged()
         }
 
-
     lateinit var clicksAcao: ClicksAcao
 
     inner class LocationsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,13 +34,12 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
             itemView.type_home.text = item.type
             itemView.review_home.text = item.review.toString()
 
-            item.img?.let {
-                val imgUri = (item.img ?: "").toUri().buildUpon().scheme("https").build()
-                Picasso.get()
-                    .load(imgUri)
-                    .error(getRandomColor())
-                    .into(itemView.img_home)
-            }
+            val imgUri = (item.img ?: "").toUri().buildUpon().scheme("https").build()
+            Picasso.get()
+                .load(imgUri)
+                .error(getRandomColor())
+                .placeholder(getRandomColor())
+                .into(itemView.img_home)
 
             when (item.review) {
                 0.0f -> {
@@ -99,19 +97,16 @@ class LocationsAdapter() : RecyclerView.Adapter<LocationsAdapter.LocationsViewHo
         return LocationsViewHolder(item)
     }
 
-
     override fun getItemCount(): Int {
         return data.size
     }
-
 
     override fun onBindViewHolder(holder: LocationsAdapter.LocationsViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
     }
-
 }
 
 interface ClicksAcao {
-    fun onClick(id: Int, oneImg : String?)
+    fun onClick(id: Int, oneImg: String?)
 }

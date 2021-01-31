@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Test Dev Hotmart</string>
+    <string name="app_name">Test Dev</string>
     <string name="ok">OK</string>
 
-    //schedules_dialog.xml
+    //d_schedule.xml
     <string name="home">Home</string>
     <string name="map">Map</string>
     <string name="profile">Profile</string>
@@ -21,10 +21,10 @@
     <string name="sunday">Domingo</string>
     <string name="txt_label_schedule">Consultar horário de funcionamento</string>
 
-
     //Request validations
     <string name="EMPTY_INVALID_REQUEST">Desculpe, não há informação disponível no momento</string>
     <string name="NOT_FOUND_REQUEST">Ocorreu um erro inesperado, tente novamente</string>
     <string name="NOT_CONNECTED_REQUEST">Verifique sua conexão</string>
     <string name="share">Compartilhar</string>
+
 </resources>

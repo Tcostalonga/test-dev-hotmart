@@ -27,7 +27,7 @@
 
     <ImageView
         android:id="@+id/star1_details"
-        style="@style/starStyle_relative"
+        style="@style/starStyle_d_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,7 +39,7 @@
 
     <ImageView
         android:id="@+id/star2_details"
-        style="@style/starStyle_relative"
+        style="@style/starStyle_d_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/star1_details"
@@ -50,7 +50,7 @@
 
     <ImageView
         android:id="@+id/star3_details"
-        style="@style/starStyle_relative"
+        style="@style/starStyle_d_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/star1_details"
@@ -61,7 +61,7 @@
 
     <ImageView
         android:id="@+id/star4_details"
-        style="@style/starStyle_relative"
+        style="@style/starStyle_d_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/star1_details"
@@ -72,7 +72,7 @@
 
     <ImageView
         android:id="@+id/star5_details"
-        style="@style/starStyle_relative"
+        style="@style/starStyle_d_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/star4_details"

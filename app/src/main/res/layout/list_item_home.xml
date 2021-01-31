@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_home"
@@ -55,10 +56,9 @@
             app:layout_constraintTop_toBottomOf="@+id/name_home"
             tools:text="Restaurante" />
 
-
         <ImageView
             android:id="@+id/star1_home"
-            style="@style/starStyle_constraint"
+            style="@style/starStyle_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -69,18 +69,17 @@
 
         <ImageView
             android:id="@+id/star2_home"
-            style="@style/starStyle_constraint"
+            style="@style/starStyle_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/star3_home"
             app:layout_constraintStart_toEndOf="@+id/star1_home"
-
             app:srcCompat="@drawable/ic_s_off" />
 
         <ImageView
             android:id="@+id/star3_home"
-            style="@style/starStyle_constraint"
+            style="@style/starStyle_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +89,7 @@
 
         <ImageView
             android:id="@+id/star4_home"
-            style="@style/starStyle_constraint"
+            style="@style/starStyle_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -100,7 +99,7 @@
 
         <ImageView
             android:id="@+id/star5_home"
-            style="@style/starStyle_constraint"
+            style="@style/starStyle_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -119,7 +118,6 @@
             app:layout_constraintStart_toEndOf="@id/star5_home"
             app:layout_constraintTop_toTopOf="@+id/star5_home"
             tools:text="2.9" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
